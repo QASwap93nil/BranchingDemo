@@ -12,4 +12,10 @@ K
 L
 
 
+<<<<<<< HEAD
 GitVicky
+=======
+GitSwapnil
+>>>>>>> 55c29133305d13938fcc9f38515ffa6cea05cbd2
+
+Both are placed
