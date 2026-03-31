@@ -1,0 +1,3032 @@
+Java Notes -> For DSA https://p.ip.fi/VqFX
+==============================>>>>>>>>>>>>>>>>
+Lecture01:->
+--------------
+- Different Flaours of JDK not JAVA
+------------------->
+
+	- J2SE -> 
+		- Java 2 Standard Edition 
+		- Includes Core JAVA features like OOP, collections, multithreading, etc.
+		- Used for stand alone application
+	- J2EE 
+		- Java 2 Enterprise Edition 
+		- Advanced java: Includes technologies like Servlets, JSP, JDBC, EJB, etc.
+		- how to connect database with system
+		- Used for web applications and enterprise-level applications.
+	- J2ME 
+		- Java 2 Micro Edition 
+		- Used for mobile and embedded systems (like old Nokia phones).
+		- Now largely replaced by modern mobile development frameworks.
+	
+- Diffrent Flavours of JDK
+------------------------------>
+	- Oracle JDK
+		- Need of Licence for Organization
+		- No need of licence for personal use
+	- Open JDK
+		- SUn micro systems started this
+		- No need for any type of licence (General Public Licence)
+	- Amazon Corrato
+		- Security update is the responsibility of Amazon
+		- Amazon has taken the open JDK & on top of it amazon deploying the security updates for users
+		- Amazon uses if for its Virtual machines (AWS)
+		- Production ready version developed by amazon
+		
+		
+- Eclipse IDE:
+--------------------->
+- Console: Area where messages are displayed
+- "sysout+Ctrl+Spacebar" -> "System.out.println()"
+
+- Nomenclature
+---------------->
+	- Class name -> pascal Case
+	- method name -> camel case
+	- modifiers -> small case
+
+
+- Basic Steps
+------------->
+	- Function must exist in a class.
+	- standalone executable can not be written inside class & outside of method. Class have variables & methods, not executable code. 
+	  like System.out.println()can not be in class
+	- executables can be written inside of method.
+	- compiler compiles a file & save it as a bytecode/.class file. JVM(interpreter) runs the .class file.
+	- compiler diretly come to main fuction while compiling.
+	
+- Rules regarding class name and file name in Java
+--------------------------------------------------->
+	- If a class is public, the file name must match the class name exactly (case-sensitive).
+	- If a class is not public, the file name can be different from the class name.
+	- A single file can contain multiple classes, but only one class can be public.
+	- The main() method can reside in any class, regardless of whether it is public.
+	- The file name must have the .java extension.
+	
+- Rules regarding "Static" non access modifier
+------------------------------------------------>
+	- Static Keyword: Used for memory management.
+	- Static Variables: Shared among all instances of a class (class-level).
+	- Static Methods: Can be called without creating an object of the class.
+	- Access Limitation: Static methods cannot access non-static members directly.
+	- Static Block: Executes once when the class is loaded into memory.
+	- Main Method: Declared as static so JVM can invoke it without creating an object.
+	- Static Inner Classes: Can exist independently of outer class objects.
+	- this and super: Cannot be used in static context.
+
+- Variables/attributes:
+----------------------->
+	1. Instance/Object/non-static Variable: 
+		- Defined in class but outside of method. 
+		- They are non static. 
+		- Whenever an object is created from class, a seperate copy will be copied to the object. So each object will have their own copy.
+	2. Static/NON-INSTANCE/NON-OBJECT Variable:
+		- aka Class variables
+		- Variables declared with keyword 'static'
+		- Static variables belong to the class itself, rather than to any specific instance of the class
+		- This means that there is only one copy of the static variable in memory, regardless of how many instances of the class are created. 
+	3. Local Variables:
+		- Variables declared inside method/function/constructor.
+		- scope is limited to methos/constructor.
+	4. Constant or Final variables:
+		- Variables declared with 'final' keyword.
+		- here Variable declaration & initialisation must be done at the same time.
+		- Once variable is initialized its value can not be changed. SO it work as constant.
+		
+- Variable declaration vs. initialization
+------------------------------------------->
+	- Variable declaration -> 
+		- Memory allocation
+			- Primitive variables get memory allocated when declared.
+			- Reference variables only get memory for the reference itself when declared (in STACK memory). 
+			  The actual object (or array) memory (in HEAP memory) is allocated when you assign a value or create the object using new.
+		- Declaration refers to the process of specifying the type and name of a variable.
+		- This tells the Java compiler what type of data the variable will store.
+		- At this point, the variable is created but not assigned a value.
+		- Declaration provides the variable's name and type.
+	- Variable initialization -> value placed in memory
+		- Initialization refers to assigning a value to the variable at the time of its declaration or later in the code.
+		- A variable can be declared without initialization, but it cannot be used before being initialized 
+		  (unless it's a local variable within a method, in which case it must be initialized before use).
+		- Initialization provides the initial value assigned to the variable.
+
+- JDK Vs. JRE Vs. JVM:
+--------------------------->
+	- JDK: Java Development Kit = JRE + Development Tools/Libraries
+	- JRE: Java Run Time Environment = JVM + zzreuntime tools/libraries
+	- JVM: Which reads & compils the Java code
+	
+- JDK :
+------------------->
+	- Oracle is the owner of Java now.
+	- It regularly(after every 6 months).
+	- Oracle provides support for every version for particular time
+	- LTS: Long time support
+	- Search for Java SE roadmap
+	
+	
+- Static keyword: 
+----------------------->
+		- https://www.geeksforgeeks.org/static-keyword-java/
+		- The static keyword belongs to the class rather than an instance of the class. 
+		- Hence Static members can be accessed without the need to create an instance of the class
+		- The static keyword is used for a constant variable or a method that is the same for every instance/object of a class.
+		- Static variables and methods are allocated memory space only once during the execution of the program. 
+		- Hence changes to a static member are reflected in all instances of the class.
+		- Static methods and variables cannot access non-static members of a class, as they are not associated with any particular instance of the class.
+		- Static methods can be overloaded, which means that you can define multiple methods with the same name but different parameters.
+		- they cannot be overridden, as they are associated with the class rather than with a particular instance of the class.
+		- static can be used for :-> https://www.javatpoint.com/static-keyword-in-java
+				- Variable (also known as a class variable)
+				- Method (also known as a class method)
+				- Block
+				- Nested class
+
+- Other Imp Points
+---------------------->			
+	1. Class name should be in pascal case.
+	2. function name should be in camel case.
+	3. Class name(in which main function resides) & file name should be same.
+	4. non static functions can not be called into static functions directly -> need to create an object for that.
+	
+=====================================================================================================================================================================
+Lecture02:->
+--------------
+
+- In Java, classes and objects are basic concepts of Object Oriented Programming (OOPs) that are used to represent real-world concepts and entities.
+
+- Class:
+----------->
+	- Class is the blueprint of an object. It is used to create objects.
+	- No memory is allocated when a class is declared.
+	- A class is a group of similar objects.
+	- Class is a logical entity.
+	- Every class in java is child class of class "Object". i.e. Object is BAAP of all classes in java.
+	- syntax
+		class ClassName{
+			// Code
+		}
+
+- Object:
+----------->
+	- An object is an INSTANCE of the class.
+	- Memory is allocated in HEAP memory as soon as an object is created.
+	- An object is like real-world entity such as a book, car, etc.
+	- Hence it is run time entity.
+	- Its user defined datatype
+	- We can create object of a class from a different package if the class is public and properly imported (or fully qualified name is used).
+	- Fully qualified name:  pack1.Student stud = new pack1.Student();  
+		- Here pack1 is another package
+		- Student is the public class in pack1
+		- & We are creating object 'stud' of Student class 1 from pack 1 in pack 2
+	- syntax
+		class Pangya{
+			// Instance Variables & methods
+		}
+		
+		class Swapnil{
+			public static void main(String []args){
+				Pangya obj1 = new Pangya(); // Object declaration & initialization
+			}
+		}
+	- Pangya obj1 -> Object declaration -> Reference variable pointing to object in memory.
+	- new Pangya() -> Object initialization -> Actual memory allocation by JVM is here -> Here 'new' is imp. It is making new object 
+	
+- Garbage Collector:
+--------------------> 
+	- Unrefernced block -> garbage
+	- Garbage collector deletes unrefrenced block
+		e.g. Example e1 = new Example(); -> object 1
+			         e1 = new Example(); -> object 2
+			 So here 'e1' is refrence variable & first points towards 1st object. But again when it is reffered for 2nd object
+			 'e1' will point towards 2nd object. Hence object 1 will become unreferenced & will delete by garbage collector.
+			 
+- Other Imp Stuff:
+----------------->  
+	- Name of Predefined classes/objects can not be used again
+	- Non static/instance function = object member function = instance member function (non static -> instance/object)
+	- We can call non static function inside static function by creating class's object in that static function.
+	- List of access specifier -> public, private, protected, default.
+	- private member is Only accessible inside the class & not accessible outside the class.
+	- By default value of integers is 0;
+
+- General:
+---------->
+	1. There can be multiple classes present in one program.
+	2. But 'public static void main(String []args){}' -> aka main method -> Only one.
+	3. Compiler searches for main function and code inside of main function is compiled & executed later by interpreter(JVM).
+	4. Static functions from other classes(in same package) -> can be called in main function using -> ClassName.functionName()
+		- static functions are class functions hence no need to create an instance to access them.
+		
+- Operators in Java
+---------------------->
+	1. Arithmatic : +, -, *, /, %()modulus i.e. remainder   :-> Operates on two variables -> returns some value as output.
+	2. Relational : >, >=, <, <=, ==, !=  :-> returns the boolean value.
+	3. Logical : &&, ||, ! :-> Operates on only boolean values & returns the boolean value.
+	4. Increament & decreament: ++, -- (Pre & post increament/decrement)
+	6. Assignment: =, +=, -=, *=, /=, %=
+	7. Ternery: "Expression ? reult1:result2 "   -> Need 3 variables
+	
+- Control statements in Java
+-------------------------------->
+	- Conditional statements
+		- If condition
+		- if-else condition
+		- nested if-else
+		- if-else ladder
+		- switch case 
+	- Looping statements
+		- For loop
+		- for each/Enhanced for loop (for arrays, arraylist & java collections)
+		- while loop
+		- do while loop
+	- Jumping statements (used along with condition)
+		- Continue > to skip the current iteration
+		- break > to break the following iterations
+		- return (Exits the method)
+
+=====================================================================================================================================================================
+Lecture03:->  2.24.07 has mistake -> If there are mutiple classes in one program it is not necessary that class having main method can only made public.
+--------------
+	
+- IMP points for class:
+----------------------->
+	- Class having main method can be declared as public.
+	- Hence in one program there can be many classes but class having main method can be made public.
+		- If a public class exists in the file, the file name must match the public class name.
+	- No outermost/top-level class can be private & protected in java -> they can only be default or public
+		- Why? -> A private or protected outer class would not be accessible to the JVM or other classes, making it impractical to use.
+		- nested/inner class can be public, private, default, protected
+		- Inner classes are part of the enclosing class and can have their access controlled relative to their enclosing class or other classes in the package.
+	- all static members/class members are defined initially -> compiler allocates memory to static members first at the time of class loading.
+
+=====================================================================================================================================================================
+Lecture04:-> Wrapper classes
+--------------
+
+- Primitive Datatypes in java -> total 8 -> Stored in Stack Memory
+------------------------------->
+		Integer: 		byte, short, int, long   -> e.g. -1,2,0,5,7,1000
+		Floating point: float, double			 -> e.g. 1.2, 22.50567
+		Character:		char,					 -> e.g. 'a', '$'
+		Boolean:		boolean                  -> e.g. true/false
+
+- Default values of primitive datatypes
+----------------------------------------->
+	- byte b;       // Default value: 0  					2^0 byte/2^8 bits i.e -2^7 to 2^7-1
+    - short s;      // Default value: 0  					2^1 byte/16bits
+    - int i;        // Default value: 0						2^2 byte/32bits
+    - long l;       // Default value: 0L					2^3 byte/64bits
+    - float f;      // Default value: 0.0f					2^2 byte/8bits  (upto 7 decimal digits)
+    - double d;     // Default value: 0.0d or 0.0			2^4 byte/16bits  (upto 15 decimal digits)
+    - char c;       // Default value: '\u0000'
+    - boolean flag; // Default value: false
+		
+- Non Primitive/Derived Datatypes in Java -> Stored in Heap Memory
+------------------------------------>
+	- Classes
+	- Arrays
+	- Interfaces
+	- Enums
+	- Strings
+	- Wrapper Classes
+	- Java Collections
+	
+- Why Java is NOT 100% OOPs language?
+-------------------------------------->
+	- OOPs language -> talks about classes & object
+	- primitive datatypes in java are not objects or classes.
+	- We dont need any class/object to declare & initialize the primitive datatypes.
+	- Hence java is not 100% OOPs language.
+
+- Var (Introduced in java10)
+---------------------------------->
+No ❌ — `var` is NOT a primitive data type in Java. `var` is just a shortcut that tells the compiler: "You decide the data type based on the value."
+
+	🔹 What is `var` in Java?
+		`var` is **not a data type**.
+		It is a **keyword used for type inference** (introduced in Java 10).
+	🔹 Type inference means:
+		The compiler automatically understands the data type from the value assigned.
+		e.g.
+				var number = 10;
+			Here:
+				* You wrote `var`
+				* But Java automatically understands it as:
+				int number = 10;
+			So `number` is actually of type `int`.
+
+	🔹 Important Rule
+		`var` **must be initialized at the time of declaration**.
+		e.g.	
+			var x;   // Error	
+			var x = 5; // correct
+		Why?
+		Because Java needs the value to understand the type.
+
+	## 🔹 Important Points
+
+	* `var` is decided at **compile time**
+	* It does **not** make Java dynamically typed
+	* After compilation, the variable has a fixed type
+	* It works only for **local variables inside methods**
+	* It cannot be used for:
+	  * Method parameters
+	  * Class-level variables (instance variables)
+	  * Return types
+
+
+	👉 `var` is **not a primitive data type**
+	👉 It is a **keyword for automatic type inference**
+	👉 The actual type is decided by the value assigned
+	`var` = “Compiler, you choose the type for me.”
+
+- What is Wrapper class?
+------------------------->
+	- A Wrapper class in Java is a class whose object wraps or contains primitive data types.
+	- In simple words, we can wrap a primitive value into a wrapper class object.
+	- Hence Wrapper classes provide a way to use primitive data types (int, boolean, etc..) as objects.
+	- The wrapper class in Java is used to convert primitive data types into objects.
+	- Hence with the use of wrapper class we can align java to as close as 100% OOPs language.
+	- So Wrapper classes are used to convert primitive types into objects 
+	- Wrapper classes still not make Java 100% OOPs lang -> Wrapper class does not eliminates the primitive datatypes.
+	- Primitive datatypes are integral part of Java language for performance considerations (stores in stack memory -> for efficiency.)
+	
+- Need of Wrapper class 
+------------------------->
+	- https://www.geeksforgeeks.org/wrapper-classes-java/
+	- They convert primitive data types into objects. Objects are needed if we wish to modify the arguments passed into a method 
+	  (because primitive types are passed by value).
+	- The automatic conversion of primitive into an object is known as autoboxing and vice-versa unboxing.
+	- The classes in java.util package handle only objects and hence wrapper classes help in this case.
+	- Data structures in the Collection framework, such as ArrayList and Vector, store only objects (reference types) and not primitive types.
+		ArrayList<int> list = new ArrayList<>(); // ❌ Not allowed
+		ArrayList<Integer> list = new ArrayList<>(); // ✅ Correct
+
+	- An object is needed to support synchronization in multithreading.
+
+- Types of Wrapper class
+--------------------------->
+		Primitive datatype				Wrapper class	
+		byte 							-> Byte
+		short 							-> Short
+		int	 							-> Integer (wrapperclass)
+		long 							-> Long
+		float 							-> Float
+		double 							-> Double
+		char 							-> Character
+		boolean 						-> Boolean
+		
+- E.g.
+------->
+		Integer wrapper class
+			- (static)int x = Integer.parseInt("125"); => returns integer type 123 (static method)
+			- Integer i1 = Integer.valueOf("125"); => returns Integer object -> so i1 is the reference variable pointing towards object (static method)
+			- int l = i1.intValue(); -> returns int type data -> 125 (NON static method -> hence need to create an object to access intValue()).
+			- Code:->
+			
+			class WrapperClasses{
+	
+				public static void main(String []args){
+			
+					int x = Integer.parseInt("1254"); // ans integer 123
+					System.out.println(x);
+					
+					// Interger Wrapper Class
+					Integer x1 = Integer.valueOf("1100",2); // 1. '2' represents base 2. will return an object & pointed by reference variable
+					int y = x1.intValue();
+					System.out.println(y);
+					
+					// Double Wrapper Class
+					Double z1 = Double.valueOf("1100"); // Double class will not take base value
+					double z = z1.doubleValue();
+					System.out.println(z);
+				}
+			}
+			
+
+=====================================================================================================================================================================
+Lecture05:->
+--------------
+
+- Parameters
+-------------->
+	- A variable defined in the method declaration to accept values passed when the method is called.
+	- e.g. int num1 & num2 in public void add(int num1, int num2)
+	
+- Arguments
+-------------->
+	- The actual value or expression passed to the method when it is called.
+	- e.g. 5 in add(5, 10)
+
+- Command Line Argument -> PASSING ARGUMENTS AT RUNTIME
+----------------------->
+	- Cla -> Command Line Argument
+	- parameters passed to the main() method when you run a Java program. 
+	- Array -> Non primitive linear data structure
+	- public static void main(String args[]){} -> here String args[] -> is the STRING TYPE ARRAY which takes input at the time of running what we provide
+	- So you can pass the arguments from command line as well ->(arguments are treated as strings).
+	- Command-line arguments in Java are passed as string arrays (String[] args) to the main() method.
+	- e.g. 
+		- Code
+			class CLA{
+				public static void main(String []args){
+					for(int i = 0; i < args.length; i++){
+						System.out.println(args[i]);  //-> O/p will be CLA ABC RTY UIO
+					}
+				}
+			}
+		- Open CMD-> javac CLA.java -> java CLA ABC RTY UIO -> these 4 are arguments(CLA ABC RTY UIO) taken by this string array.
+		- here args is reference variable & points towards the array of arguments passed in CLA.
+	
+=====================================================================================================================================================================
+
+Lecture06:->
+--------------
+
+- Packages
+------------->
+	- Package: Literally a folder structure
+		- Can be of two types
+			- User defined: created by user during the time they write the code
+			- Inbuilt packages. Following are imp
+				- Java.lang
+				- java.io
+				- java.util	
+	- Java made various folders like swing, util, io, awt -> various predefined class files are stored in these folders according to utility.
+	- Can we use these packages -> Yes(dependent on access specifiers)
+	- like util package is public & we want to use it 
+		import java.util.*; -> here util package is saved in java folder. ".*" makes all CLASSES in the java.util package available, not files. 
+		The Java compiler deals with classes, not files.
+	- If class is public then class name & file name should be same.
+	- If a class is not public, the file name does not need to match the class name.
+	- There can be mutiple class in one java program but only one can be public.
+	- TO MAKE A PACKAGE WE NEED TO WRITE 
+		a. "package PackageName;" at the starting of code  
+		b. & while compiling  'javac -d . FileName.java'
+		c. After this a folder with package name is generated by system with class file in it.
+	- Here 'd' represents directory & '.' represents current directory
+	- Public (access specifier) classes can be imported anywhere.
+	- To import & use methods of class of other packages -> That class must be public.
+	- To use methods of public class of other packages -> the methods should also be public.
+	- i.e. only public instance members are accessible in other packages.
+	- for protected instances we need to use inheritance
+	- Java.lang is the fundamental package in java
+		- No need to call it explicitely
+		- Provides classes that are fundamental to the design of the Java programming language.
+		- Loads automatically in the backend/runtime while writing the java code.
+		- Object class: Class Object (class named as 'Object') is the root of the class hierarchy. This class is present in Java.lang package.
+	- Following things can be stored in Package
+		- Classes
+		- Interface
+		- Enum
+		- Sub-packages (Must be created using '.' i.e dot operator e.g. ParentPackage.SubPackage.ChildPackage)
+
+- What are the 12 modifiers in Java?
+--------------------------------------->
+	- Modifiers -> keywords using which we can make changes to the characteristics of a variable, method, or class and limit its scope
+	- Access Modifiers
+		- 4 types -> public, private, protected, default
+	- Non access modifiers
+		- 8 types -> static, final, synchronized, abstract, native, strictfp, transient, and volatile.
+		- provide information about the characteristics of a class, method, or variable to the JVM.
+
+- Access Modifiers/Specifiers
+------------------->
+	- Access modifiers in Java are the keywords that are used for controlling the use of the constructors, fields, and methods in a class.
+	- Specifies the accessibility or scope of a field, method, constructor, or class. 
+	- We can change the access level of fields, constructors, methods, and class by applying the access modifier on it.
+	- 4 types -> public, private, protected, default -> 
+	- Access levels -> 
+		✔️Private: Only within the class. It cannot be accessed from outside the class.
+		✔️Default: Only within the package. It cannot be accessed from outside the package. If you do not specify any access level, it will be the default.
+		✔️Protected: Within the package and outside the package through child class. If you do not make the child class, it cannot be accessed 
+		  from outside the package.
+		✔️Public: Access level is everywhere.
+	
+	-  
+		Same class: -> public, protected, private, default
+		Same Package : -> public, protected, default   NOT -> private 
+		Outside the package in subclass(inheritance): -> public, protected -> i.e. protected can access the child classes of other packages not parent 
+		classes NOT -> private, default
+		Outside the package in non - subclass(non - inheritance): -> public
+		
+- Algorithm to Use Access Modifier in Java
+-------------------------------------------->
+	- Here’s a basic algorithm for using access modifiers in Java:
+		- Define a class: Create a class to represent the object you want to manage.
+		- Define instance variables: Inside the class, define variables for the data you want to manage.
+		- Set an access modifier:
+			-	Use private for variables only accessible within the class.
+			-	Use protected for variables accessible within the class and its subclasses.
+			-	Use public for variables accessible from anywhere.
+		- Use getter and setter methods: To access or modify variables, use getter (accessor) and setter (mutator) methods, even for public variables, 
+		  to maintain encapsulation.
+
+=====================================================================================================================================================================
+
+Lecture07:->
+--------------
+
+- Java Constructor: Key Points
+------------------------------->
+	- Definition:
+		- A constructor is a specialized method used to initialize objects in Java.
+		- It is automatically called when an object of the class is created using the `new` keyword.
+		- A constructor is a special feature of the class, not a class method.
+
+	- Purpose:
+		- To initialize object attributes/variables (assign initial values).
+		- To set up the object's initial state.
+
+	- Characteristics:
+		- The name of the constructor **must match the class name**.
+		- No return type -> (not even `void`).
+		- Automatically invoked when an object is created (cannot be explicitly called).
+
+	- Default Constructor:
+		- If no constructor is defined in a class manually, the compiler provides a **default constructor** (no arguments, empty body).
+		- If a constructor is explicitly defined by the programmer, the default constructor will **not** be created by the compiler.
+
+- Types of Constructors
+------------------------>
+	- Default/Implicit Constructor
+		- Automatically created by the compiler if no constructor is written.
+		- Does not take arguments and has an empty body.
+	- Explicit/Custom Constructor
+		- Written by the programmer.
+		- Types:
+			- Non-parameterized Constructor**: Does not accept any arguments.
+			- Parameterized Constructor**: Accepts parameters to initialize specific values.
+			- Constructor Overloading**: Multiple constructors in a class with different parameter lists.
+
+- Can we use access modifiers for constructors
+----------------------------------------------->
+	- yes we can use access modifiers to control the access by other classes
+	- Access modifiers (`public`, `protected`, `default`, `private`) can control which classes can access the constructor.
+
+- Differences Between Constructor and Method
+--------------------------------------------->
+	- Constructor has the **same name as the class**, while a method can have any name.
+	- Constructor **does not have a return type**; methods must specify a return type.
+	- Constructor is called **once** when an object is created; methods can be called multiple times.
+
+- Rules for Constructors
+-------------------------->
+	- A constructor **cannot be abstract, final, static, or synchronized**.
+	- It can use any access modifier (`public`, `private`, `protected`, or default).
+
+- Constructor OVERLOADING  -> possible
+--------------------------->
+	- multiple constructors with same name but different parameters 
+	- At COMPILE TIME, the compiler selects the appropriate constructor to execute based on the arguments 
+	  provided in the new statement.
+
+Garbage Collection and Finalize Method
+------------------------------------------->
+	- Java does not have a **destructor** like C++.
+		- Why? 
+			- Object reference variable is live till the closing curly bracket of main function. 
+			- So when compiler reaches closing curly bracket, reference variable became dead. 
+			- So the object in memory became referenceless. 
+			- So garbage collector goes to such referenceless objects & asked them to run Finalise function(protected function).
+			- When object completed the run of finalize function, garbage collector deletes the object. 
+			- Hence there is no any Destructor in Java.
+	- The **Garbage Collector (GC)** in Java automatically deletes objects that are no longer referenced (unreferenced/referenless).
+	- When an object becomes unreachable, the garbage collector may invoke the `finalize()` method (if overridden in the class) before destroying the object.
+	- **Note**: The `finalize()` method is protected and deprecated as of Java 9.
+	- Java's garbage collector and `finalize()` method ensure memory management without the need for destructors.
+
+=====================================================================================================================================================================
+
+Lecture08:->
+--------------
+
+- Pillars Of OOPs
+------------------->
+	- Inheritance 
+		- Purpose: To achieves reusability of code & method overloading & establish a hierarchical relationship between classes.
+		- How to achieve? -> Use of Extends keyword
+	- Polymorphism
+		- Purpose: To enhance flexibility and scalability by allowing different behaviors for the same action.
+		- How to achieve? -> Method overloading/Compile Time polymorphism & Method overriding/Run time polymorphism.
+		- Run time polymorphism achieves through Method overriding, interfaces, abstract classes, and dynamic method dispatch.
+	- Abstracion
+		- To reduce complexity and increase efficiency by focusing on what an object does rather than how it does it.
+		- How to achieve? -> Use abstract classes and interfaces.
+	- Encapsulation
+		- To hide the internal details and only expose essential features through a controlled interface.
+		- How to achieve? -> Use private access modifiers for variables & Provide public getters and setters for controlled access. 
+		
+- Inheritance
+--------------->
+	- Super/Parent/Base -> Sublcass/Child/Derived
+    - Inheritance is an important pillar of OOP(Object-Oriented Programming). 
+	- It is the mechanism in Java by which one class is allowed to inherit the features(fields and methods) of another class.
+	- In inheritance a child class is made from parent class using 'extends' word.
+	- So child class gets ACCESS(not the copy -> These are not duplicated) of all the non private instance members of parent class. 
+	- So if there are 4 istance members in parent class and child class has its own 3 instance members then object made from child 
+	  class has copy of total 7 instance members.
+	- IMP -> parent can not access the child class's members. Its one way relationship.
+	- child class can have main method.
+		
+- Why Inheritance?
+------------------>
+	- Code reusability to follow DRY(Do Not repeat Yourself ) priciple.
+	- Method Overriding is achievable only through Inheritance. It is one of the ways by which Java achieves Run Time Polymorphism.
+	- The concept of abstract where we do not have to provide all details, is achieved through inheritance. 
+	- Abstraction only shows the functionality to the user.
+		
+- Types of Inheritance
+----------------------->
+	- Single
+		- One parent class has only one child class
+	- Hierarchical 
+		- One parent can have multiple child classes.
+	- Multilevel
+		- Class D is inherited from class C.
+		- Class C is inherited from class B.
+		- Class B is inherited from class A.
+		- So class B has all instance members of class A & its own.
+		- class C has instance members of class A&B & its own.
+			- class D has instance members of class A&B&C & its own.
+	- Multiple
+		- One child class may have mulktiple parent class.
+		- Java does not support Multiple inheritance as a feature. But why?
+			- Suppose there are two parent classes P1 & P2. & their child class is C1. 
+			- In P1, P2 & C1 there are 5 instance member in each class
+			- SO child class's object has total 15 members copy.
+			- Now in P1 & P2 there is setData method(){} -> same name.
+			- So when object of C1 calls the setData() method comliper confuses which one to call.
+			- Hence its is Achieved using interface.
+			- Multiple inheritance is achieved indirectly through INTERFACES, not classes.
+	- Hybrid
+		- Combination of any two.
+
+- Constructor Inheritance
+---------------------------->
+	- A child class can call a parent class constructor using the super() keyword.
+	- Also child has its own constructor as well(default/implicit constructor).
+	- So when an object of child is made 
+		a. child's constructor is called
+		b. compiler goes to child's class & meet 'extends' keyword.
+		c. so he find the childs constructor & add 'super()' as the first statement in child's constructor(if not explicitely added).
+			- Note: if parent has default constructor & in childs constructor super() not written explicitely then Java add it & execution happens
+			- Note: if the parent class has a parameterized constructor, the child class must call it explicitly using super(parameter).
+		d. then he goes to parent's constructor & execute it.
+		e. then came back to child's constructor & execute it.
+		f. hence order of constructor calling is 1. child's constructor 2. parent's constructor.
+		g. But order of execution is 1. parent's constructor then 2. child's constructor
+		h. constructor calls are always top-down in inheritance, and the parent class constructor 
+		   is executed before the child class constructor, ensuring that the parent class is fully initialized first.
+		i. The sequence is: 1. Child constructor is called, 2. Parent constructor is executed (via super()), 3. Remaining child constructor code executes.
+	4. Usage of super keyword -> IMP
+		a. super can be used to refer immediate parent class instance variable. 
+			- If both parent & child class has same name variable/attribute then to access the parent's variable super.variable_name is used.
+		b. super can be used to invoke immediate parent class method.
+			- If both parent & child class has same name method/behaviour then to access the parent's method super.method_name is used.
+		c. super() can be used to invoke immediate parent class constructor.
+
+		
+=====================================================================================================================================================================
+
+Lecture09:-> 
+--------------
+
+- Polymorphism:
+----------------->
+	- literal meaning -> Multiple forms.
+	- Same method(method name same but return type and/or no/type of parameters are diff) can be used for different tasks
+	- Diffrent types of polymorphism
+		- Complile Time/Static Polymorphism -> Function overloading (Constructor Overloading is possible)
+		- Run Time/Dynamic Polymorphism -> 
+			- Method Overriding
+			- Upcasting (Using a superclass/interface reference to call overridden methods in a subclass)
+			- Dynamic Method Dispatch
+			- Interfaces (Using interface reference to invoke implemented methods)
+			- Abstract Classes and Methods (Overriding abstract methods in a subclass)
+			- Object Type Determination (e.g., polymorphic behavior using instanceof or reflection)
+	
+- Function overloading/Complile Time/Static Polymorphism:
+------------------------------------------------------------>
+	- In SAME CLASS :-> multiple functions having same name but with different PARAMETERs list.
+	- So if object of such class is made & suppose one function is called -> w.r.t arguments passed during calling the function,
+	  COMPILER decides which function to call.
+	- Hence it is COMPILE TIME/STATIC POLYMORPHISM.
+		
+- Function overriding/Run Time/Dynamic Polymorphism
+----------------------------------------------------->
+	- This is related to INHERITANCE
+	- if child class & parent class has a function lets say "f1(){}" with same name & arguments then function call will run the 
+	  function inside of child class. This is because the method in the parent class is overridden by the child class. Since 
+	  the method is overridden, This method has more priority than the parent method inside the child class. 
+	- This all happens in runtime & JVM decides which function to call.
+	- if parent class has a method with 'final' keyword -> cant override it.
+	
+- Can we overload & override the main function?
+------------------------------------------------>
+
+-Main method Overloading -> Possible
+             -----------
+ 
+	public class MainOverloadExample {
+    
+		// Standard main method - Entry point for the program
+		public static void main(String[] args) {
+			System.out.println("Main method with String[] args");
+        
+			// Calling overloaded main methods
+			main(10);         // Calls the main(int) method
+			main(10, 20);     // Calls the main(int, int) method
+			main("Hello");    // Calls the main(String) method
+		}
+    
+		// Overloaded main methods
+		public static void main(int num) {
+			System.out.println("Main method with int: " + num);
+		}
+
+		public static void main(int num1, int num2) {
+			System.out.println("Main method with two ints: " + num1 + ", " + num2);
+		}
+
+		public static void main(String str) {
+			System.out.println("Main method with String: " + str);
+		}
+	}
+
+	- Here JVM looks for main method with (String args[]) 
+	- Question of ambiguity in calling which main method is not there.
+	
+-Main method OVERRIDING -> Not Possible
+             ----------
+	- Why not possible?
+	- main method is static method i.e. it belongs to class rather than an object
+	- When you define a main method in a subclass, it doesn't override the parent 
+	  class's main method; instead, it creates a new main method for the subclass. 
+	- The JVM always looks for the main method with the signature: public static void main(String[] args)
+
+
+- 'this' keyword in java:
+------------------------->
+	- Refers to Current Object  
+		- `this` refers to the current object inside an instance method or constructor. (see the diagram photo in folder)
+	- Used to Access Instance Variables  
+		- It is commonly used to distinguish between instance variables and local variables or parameters when they have the same name.
+	- Used in Constructors:  
+		- In constructors, `this` can be used to call another constructor in the same class (constructor chaining).
+		- Syntax: `this(parameterList);` -> CONSTRUCTOR CHAINING -> see the constructor chaining with this keyword java program.
+	- Can Be Passed as Argument:  
+		- The `this` reference can be passed to other methods or constructors, allowing the current object to be passed as an argument.
+	- Not Available in Static Context:  
+		- `this` cannot be used in **static methods** or **static blocks** because static methods don't belong to any instance.
+	- Used to Invoke Instance Methods:  
+		- `this` can be used to **call another instance method** from the current object.
+	- Cannot Be Assigned:  
+		- `this` is a reference and cannot be assigned a new value.
+	- Used in Inner Classes:  
+		- In inner classes, `this` refers to the current instance of the inner class. You can use `OuterClass.this` to refer to the outer class instance.
+	- Helps with Method Overloading:  
+		- `this` can be used in method overloading to explicitly invoke methods or clarify scope.
+		
+- 'super' keyword in java:
+--------------------------->
+	- `super` Keyword -> Referring to Parent Class Instance
+	- Refers to Parent Class:  
+		- 'super' refers to the immediate parent class and can be used to access its methods, constructors(super()), and variables.
+	- Accessing Parent's Instance Variables:  
+		- If the child class has the same-named variables as the parent, `super` helps refer to the parent class's instance variables to avoid ambiguity. 
+	- Accessing Parent's Methods:  
+		- `super` is used to invoke methods of the parent class, especially when the method is overridden in the child class.
+	- Cannot be Used in Static Context:  
+		- `super` cannot be used in **static methods** because static methods do not belong to a specific instance.
+	- Used in Inheritance:  
+		- It is mostly used when there is inheritance and the child class needs to access or modify behavior from the parent class.
+		
+		
+- "super()" Function (Referring to Parent Class Constructor):
+--------------------------------------------------------------->
+	- Used to Call Parent's Constructor:
+		super() invokes the parent class's constructor. This is used to initialize the parent class's state.
+	- Must Be First Statement:
+		super() must be the first statement in the constructor if it is called; no other statements can precede it in the child constructor.
+	- Used in Constructor Chaining:
+		It is commonly used to call another constructor in the parent class, enabling constructor chaining.
+	- No Argument or with Arguments:
+		- If the parent class has a default constructor (no arguments), super() with no arguments can be used.
+		- If the parent class constructor has arguments, super(arguments) can be used to pass the required arguments.
+		- If Not Called, Implicit Call:
+		- If super() is not explicitly called in the child class constructor, the Java compiler automatically inserts a call to the no-argument constructor 
+		  of the parent class (if it exists).
+		  
+- Constructor Chaining
+------------------------>
+	- Constructor chaining in Java means calling one constructor from another constructor within the same class or from a parent class. 
+	- It's a way to reuse code and make sure that initialization logic happens in one place.
+	- How It Works
+		- In the same class: Use this() to call another constructor of the same class.
+		- In the parent class: Use super() to call a constructor from the parent class.
+		
+=====================================================================================================================================================================
+
+Lecture10:->  
+--------------
+
+- "abstract" Keyword
+------------------------>
+	- Keyword 'abstract'
+	- Abstact class can not be instanciated i.e. we cant make object out of abstarct class -> same as interface
+	- But we can make child classes from abstract class using inheritance. -> main use of abstract classes.
+		- abstract methods are empty-bodied in Java. They do not have a method body because their purpose is 
+		  to define a method signature (name, parameters, and return type) that must be implemented by a subclass.
+	- Variables & Methods inside abstract class may be static or non static
+	- Methods inside abstract class may or may not be abstarct.
+	- If method is abstract then class must be abstract i.e. abstarct method lives in abstarct class only.
+	- abstract VS Abstaction
+		- abstract : keyword used to make classes & methods abstract.
+		- Abstraction : OOPs concept ->  focuses on hiding implementation details and exposing only essential features to the user
+			Can be achieved through
+			- Abstract classes
+			- Interface
+	- When abstract class has an abstract method & we made the child class of that class then class by default also become abstract
+       So we cant make object of that child class. To avoid this use method OVERRIDING & make a same name & aargument method in child
+	   class same as that of parent. SO now we can make object of child class.
+			- This is the main essence of abstract class.
+			- Abstact class only defines method signature & implementation is the responsibility of child classes.
+			- Here child classes have to has do method overriding.
+	- Abstract class also has CONSTRUCTOR. Though we cant make object out of Abstract class but we make child class of abstract class.
+		- Now if we make the object of child class, the child compiler call the child class constructor but due to super() function parent
+	      class i.e. abstarct class's constructor function is called & executed first. 
+		- Hence Abstract class, infact all type of classes 
+	      has their own constructor.
+	- Why abstract class exist?
+		- Enforcing Rules:
+			Use abstract classes when you want to enforce certain rules or constraints on subclasses, 
+			ensuring they implement specific methods or adhere to a particular design.
+		- To privide an Abstarction (OOPs) concept.
+		
+		
+
+- Interface in java -> VIMP Topic
+---------------------->
+
+	- An interface in Java is a BluePrint of class. It has PUBLIC STATIC FINAL constants/variables/attributes and PUBLIC ABSTRACT methods.
+	- Interface contains only ABSTRACT METHODS & not method body.
+	- It is used to achieve ABSTRACTION & MULTIPLE INHERITANCE in Java.
+	- By default, variables in an interface are public, static, and final.
+	- It cannot be instantiated just like the abstract class. -> can only be implemented
+	- final -> once value assigned -> can not be changed later.
+	- To declare an interface, use the 'interface' keyword just like class. e.g. interface Inter1{} 
+	- It is used to provide total abstraction. 
+		- That means all the public abstract methods in an interface are declared with an empty body 
+     	- Attributes are Public, static, and final by default. 
+		- A class that implements an interface must implement all the abstract methods declared in the interface. 
+	- Method types in Interface
+		- Abstract Methods: Methods without a body. Declared by default as public abstract.
+			Example: void display();
+		- Default Methods (Java 8+): Methods WITH BODY. Can be overridden by implementing classes. -> Need to write default exclusively
+			Example: 
+			default void show() {
+						System.out.println("Default Method in Interface");
+			}
+		- Static Methods (Java 8+): Methods WITH BODY, CAN NOT BE OVERRIDDEN. Called using the interface name.
+			Example: 
+			static void greet() {
+						System.out.println("Static Method in Interface");
+			}
+		- Private Methods (Java 9+): Encapsulated helper methods used by other methods within the interface.
+	- From java 8 onwards -> we can have default and static methods in an interface
+	- From java 9 onwards -> we can have private methods in an interface
+	-  The Java compiler adds public and abstract keywords before the interface method so need not to write it. 
+	- Moreover, it adds public, static and final keywords before data members.
+	- static attributes of interface can be inherited to class but not the static methods.
+	- Keywords:
+		- interface -> to define interface
+		- implements -> to make/implement a class from interface
+		- extends -> interface inheritance.
+	- VIMP: 
+		- in Java, an interface is not a class -> it just a blue print
+		- Also it does not have a constructor -> why? 
+			 - main work of constructor is to assign values on instanciation. But in interface attributes
+		       are public, static & FINAL. So values must be assign at the time of declaration.
+	- A class is a blueprint for creating objects, defining their attributes and behaviors. 
+		An interface, on the other hand, is a contract that specifies a set of methods a class must implement.
+	- Interface Inheritance
+		- Atrributes are static, public, final -> inherited to child interface.
+		- java 8 -> Static methods -> not inherited to child interface.
+	- When a class implements an Interface it is must to override the abstarct methods of interface. 
+	- Child's these overridden methods must be public.
+	
+
+=====================================================================================================================================================================
+
+Lecture11:->  
+--------------
+
+- Multiple inheritance using INTERFACES
+-----------------------------------------
+	- Multiple Inheritance in java -> Not possible using class
+		- Multiple inheritance means -> having more tahn one parent class.
+		- Not possible, but why? -> if both parent classes have a method with same name & arguments then compiler will get confused.
+	2. Multiple Inheritance can be achievable using interface
+		- How?
+		- Interface's variables/attributes are by default public, static & final.
+		- Interface's methods are by default public abstract.
+		- So if a class is implemented using interface then in that class we have to use method overriding & write those abtract methods as 
+		  public methods. -> compiler will not get confuse & call the correct method when to do upon so.
+		- Now here the main problem of Multiple inheritance gets resolved.
+		- In class (interface implemented class) we use method overloading (if parent interfaces have same methods) -> so compilers confusion
+		  gets clear.
+		
+		
+- @Override in java
+------------------------>
+
+	- Definition
+			- `@Override` is an annotation used to indicate that a method is **overriding** a method in its superclass or interface.
+	- Purpose
+			- Ensures that the method overrides a method from the parent class or implements an interface method.
+			- Helps catch errors at compile time if the method signature doesn't match.
+	- Benefits
+			- Compile-Time Check**: Prevents accidental overloading instead of overriding.
+			- Code Readability**: Clearly indicates that the method is overridden, improving code maintainability.
+			- Error Prevention**: Detects typos or incorrect method signatures.
+	- Usage
+			- Placed above a method that overrides a superclass or implements an interface method.
+	- Common Mistakes Detected by `@Override`
+			- Mismatch in method signature
+			- Attempting to override a non-existent or private method
+	- Overriding Interface Methods
+			- `@Override` is also used when a class implements an interface method
+	- What will happen if Not Use `@Override`
+			- Code will still work, but:
+			- You lose compile-time checks.
+			- It becomes harder to identify intentional overrides.
+	- Misconceptions
+			- `@Override` is optional: It's not required for overriding but is a best practice.
+			- Does not affect runtime behavior: It is only a compile-time annotation.
+
+
+=====================================================================================================================================================================
+
+Lecture12a: ->  MULTITHREADING 
+--------------
+- Thread
+------------>
+	- In Java, a thread is the smallest unit of execution within a process.
+
+
+- Multithreading
+------------------>
+	- Multithreading is a Java feature that allows the execution of two or more parts of a program simultaneously to make better use of CPU resources. OR
+	- Multithreading is a Java feature that allows concurrent execution of two or more parts of a program for maximum utilization of CPU. 
+	- These parts of a program are known as threads.
+	- mutiple process at a time -> Multi threading
+	- multiple app simulteneously -> multi tasking
+	
+- How to achieve Multithreading
+----------------------------------->
+	- Runnable interface
+	- Multithreading class
+
+- Upcasting
+--------------->
+	- We can't make the object of Interface but we can make the REFERENCE variable of interface.
+    - Parent Class/Interface Reference:
+		- The reference variable is of the parent type or interface type.
+		- The object being referenced is of the child type (a subclass or a class implementing the interface).
+		- Not possible with any random class/non child class.
+	- Access Control:
+		- You can access only the methods and variables defined in the parent class or interface.
+		- However, overridden methods in the child class are called due to dynamic method dispatch (runtime polymorphism).
+		- Practical example: in selenium we use WebDriver driver = new ChromeDriver(); here WebDriver is an interface while Chromedriver is class of chrome
+	- Purpose:
+		- Simplifies code and allows for polymorphism.
+		- Helps generalize object handling.
+
+	- Key Takeaways
+		- Upcasting is assigning a child class object to a parent class or interface reference.
+		- It limits access to only the methods/fields declared in the parent class or interface.
+		- Actual behavior is determined at runtime, depending on the object type (not reference type).
+
+- Advantages of Java Multithreading
+------------------------------------>
+	- It doesn't block the user because threads are independent and you can perform multiple operations at the same time.
+	- You can perform many operations together, so it saves time.
+	- Threads are independent, so it doesn't affect other threads if an exception occurs in a single thread.
+	
+
+- Thread state/Lifecycle
+---------------------------->
+	- A thread state in Java tells you what a thread is currently doing or waiting for during its lifecycle. 
+	- Think of it as a "status" that describes where the thread is in its journey.
+	- States -> total 6
+		- NEW -> 
+			- The thread is created but hasn't started yet. 
+			- e.g. Thread t = new Thread();
+		- RUNNABLE -> 
+			- The thread is ready to run but waiting for the CPU to execute it. 
+			- e.g. After calling t.start();
+		- RUNNING (Not a formal state) -> 
+			- Actually running on the CPU. 
+			- In Java, RUNNABLE includes both ready-to-run and currently-running threads.
+		- BLOCKED -> 
+			- The thread is waiting to enter a synchronized block or method (locked by another thread).
+		- WAITING or TIMED_WAITING or NOT RUNNABLE -> 
+			- The thread is paused and waiting for a signal to resume. 
+			- e.g. Using .wait() or .sleep().
+		- TERMINATED -> 
+			- The thread has finished running and is no longer active. 
+			- or t.stop() is called -> here it cant be runnable/running again -> dead state.
+	- Sometimes multiple thread goes into running state/access the same resource. -> concurrently
+		- In such situation java stops working.
+		- This is because of Unsynchronised nature of Multithreading.
+		- hence use "SYNCHRONIZE" keyword to avoid such situation.
+		- Take the example of joint bank account -> both account holder (2 threads) try to access the bank account at the same time.
+		
+- Thread priority
+--------------------->
+	- 3 types of priority -> predefined static variable
+		- MIN_Priority(0) -> minimum
+		- NORM_priority(5) -> Normal/default 
+		- MAX_priority(10) -> Highest
+	- Numbers can be from 0 to 10
+
+	
+*/
+
+
+// MULTI THREADING USING RUNNABLE INTERFACE
+//------------------------------------------------>
+
+class Process1 implements Runnable{
+	public void run(){   // as Program 1 & program 2 are implementing Runnable interface we need to do method overriding of run(), else both program will be abstract
+		for(int i=1; i<=10; i++) System.out.println("Process1 'i' is: " + i);
+	}
+}
+
+class Process2 implements Runnable{
+	public void run(){
+		for(int i=11; i<=20; i++) System.out.println("Process2 'i' is: " + i);
+	}
+}
+
+class MultiThreading1{
+	public static void main(String args[]){
+		Process1 p1 = new Process1();
+		Process2 p2 = new Process2();
+		
+		// Thread class implements the Runnable interface & Runnable has only one method run(). So to execute run method need to create a thread object
+		// But when object is created the constructor of thread also executes & this constructor accept only runnable type data. Hence Process 1 & process 2
+		// are implementing the runnable interface.
+		Thread t1 = new Thread(p1);
+		Thread t2 = new Thread(p2);
+		t1.start(); // When `t1.start()` is called, it begins executing the `run()` method of `Process1` in a separate thread.
+		t2.start();
+	}
+}
+
+/* Step by step explaination
+--------------------------------->
+	- What is a Thread?
+		- A thread is like a separate path of execution in a program. It allows your program to do multiple things at the same time (concurrent execution). 
+		- For example, if your program is like a road, then threads are like separate lanes on that road, allowing multiple cars (tasks) to move 
+		  simultaneously without waiting for each other.
+	- One Thread in the Given Program:
+		- In your program, `t1` is a thread.
+			- What is `t1`?**
+			- `t1` is a thread created using the `Thread` class.
+			- It is responsible for running the task defined in `Process1`.
+		- What does `t1` do?**
+			- When `t1.start()` is called, it begins executing the `run()` method of `Process1` in a separate thread.
+			- The task of `t1` is to print numbers from 1 to 10.
+
+	- Step-by-Step Simplest View:
+			- Process1 p1 = new Process1();`  
+				- Creates the task that will print numbers 1 to 10.
+			- Thread t1 = new Thread(p1);`  
+				- Wraps the task (`p1`) into a thread (`t1`), so it can run concurrently.
+			- `t1.start();`  
+				- Starts the thread, making it execute the `run()` method of `Process1`.
+
+	- What Happens When You Run the Program?
+			- `t1` and `t2` start running at the same time.
+			- `t1` prints numbers from 1 to 10.
+			- `t2` (another thread) prints numbers from 11 to 20.
+			- Both threads run independently and may interleave their outputs.
+*/
+
+// MULTI THREADING USING THREAD class
+//------------------------------------------------>
+
+class Process1 extends Thread{
+	public void run(){   // as Program 1 & program 2 are in hierarchical inheritance with Thread class.
+		for(int i=1; i<=10; i++) System.out.println("Process1 'i' is: " + i);
+	}
+}
+
+class Process2 extends Thread{
+	public void run(){
+		for(int i=11; i<=20; i++) System.out.println("Process2 'i' is: " + i);
+	}
+}
+
+class MultiThreading2{
+	public static void main(String args[]){
+		Process1 p1 = new Process1();
+		Process2 p2 = new Process2();
+		
+		// Here Program1 & Program2 are child of Thread class so object of Program1 & Program2 can access the methods of Thread.State
+		// We required start() method of thread.
+		p1.start();
+		p2.start();
+	}
+}
+
+====================================================================================================================================================================
+
+Lecture12b: ->  Scanner class & Synchronization in Multithreading(FULL Program) 
+--------------
+
+- MULTI THREADING without Synchronization - Full program
+------------------------------------------------------->
+
+
+/*
+	Following is the example of a joint account. If both customer try to withdraw an amount from same account at a time
+*/
+import java.util.Scanner;
+class Account{
+	int curBal;  // instance variable current balance
+	// Constructor which will initiate the curr balance value as soon as object(when a customer deposits money) is created
+	Account(int DepoAmt){
+		curBal = DepoAmt;
+		//curBal = 5000;
+	}
+	
+	// check for account balace is sufficient or not
+	boolean isSufficient(int withdrawAmt){
+		if(curBal >= withdrawAmt) return true;
+		else return false;
+	}
+	
+	// withdraw money method
+	void withdrawMoney(int withdrawAmt, String name){
+			curBal = curBal - withdrawAmt;
+			System.out.println(name + " "+ withdrawAmt + " Rupees Withdrawal Successfull");
+			System.out.println(name + "Remaining balance is " + curBal);
+	}
+}
+
+class Customer implements Runnable{
+	Account holder;  // a variable 'holder' with datatype of Account
+	String name;
+	
+	// Cunstructor which will recieve a variable of 'Account' datatype(which holds the information of amt deposited) & name of customer 
+	Customer(Account x1, String s1){
+		holder = x1;  //Account holder = x1; -> Account holder = new Account(5000); -> hence we created an object of account here as well & can access the methods of Account class
+		name = s1;
+	}
+	
+	// As customer implements the runnable we need to do method overloading of run() -> this method is responsible for running the code which needs to be thread
+	public void run(){
+		Scanner s1 = new Scanner(System.in);
+		
+		System.out.println(name + "Please enter the amount for withdrawal");
+		int amt = s1.nextInt();   // take input from customer (What is the amt you want to withdraw)
+		
+		if(holder.isSufficient(amt)) holder.withdrawMoney(amt, name);
+		else System.out.println(name + " You have Insufficient Balance. Current balance is: " + holder.curBal);
+
+	}
+	
+}
+
+class MultiThreadingWithoutSync1{
+	public static void main(String args[]){
+		Account a1 = new Account(5000);
+		//Account a2 = new Account(5000);
+		Customer c1 = new Customer(a1, "Sumit");
+		Customer c2 = new Customer(a1, "Amit");  // a1-> shared resource. Synchronization problems only arise when multiple threads access and modify the same shared resource.
+		Thread t1 = new Thread(c1);
+		Thread t2 = new Thread(c2);
+		t1.start(); // When `t1.start()` is called, it begins executing the `run()` method of `customer` in a separate thread.
+		t2.start();
+	}
+}
+
+
+- Code without the use of synchronized block
+--------------------------------------------->
+	- Use of multithreading
+	- Use of scanner class
+	- Winessed the inherent problem of multithreading
+		- Unsynchronization
+		- Results are not consisten
+
+- MULTI THREADING USING Synchronization - Full program
+------------------------------------------------------->
+
+import java.util.Scanner;
+
+class Account{
+	int curBal;
+	Account(int amt){
+		curBal = amt;
+	}
+	
+	boolean isSufficient(int withdrawalAmt){
+		if(curBal >= withdrawalAmt) return true;
+		else return false;
+	}
+	
+	void withdrawal(int withdrawalAmt, String name){
+		boolean flag = isSufficient(withdrawalAmt);
+		if(flag){
+			curBal = curBal - withdrawalAmt;
+			System.out.println(name + " " + withdrawalAmt + " rupees withdrawn successfully");
+			System.out.println(name + " Current balance is "+ curBal);
+		}
+		else{
+			System.out.println(name + " you have insufficient balance");
+			System.out.println(name + " Current balance is "+ curBal);
+		}
+	}
+}
+
+
+class Customer implements Runnable{
+	Account holder;
+	String name;
+	Customer(Account user, String name){
+		this.name = name;
+		holder = user;
+	}
+	public void run(){
+		Scanner sc = new Scanner(System.in);
+		// Synchronization is applied using synchronized particular code block.
+		synchronized(holder){   // common resource -> holder
+		System.out.println(name + ", please enter the amount");
+		int amt = sc.nextInt();
+		holder.withdrawal(amt,name);	
+		}
+	}
+}
+
+
+class MultiTWithSynch{
+	public static void main(String args[]){
+		Account acc = new Account(5000);  // common resource
+		
+		Customer c1 = new Customer(acc, "Amit");
+		Customer c2 = new Customer(acc, "Prajakta");
+		
+		Thread t1 = new Thread(c1);
+		Thread t2 = new Thread(c2);
+		
+		t1.start();
+		t2.start();
+	}
+}
+
+
+-  Synchronization is Needed for Shared Resources:
+----------------------------------------------------->
+	- Synchronization problems only arise when multiple threads access and modify the same shared resource.
+	- t1 and t2 both are operating on the same Account object (e.g., Account a1)
+	- So make shared resource synchronized -> in implementing class i.e. in customer class.
+
+
+- Scanner class
+----------------->
+	- inside of util package
+	- import java.util.Scanner;
+	- Used for taking input from user.
+	- Syntax: Scanner s1 = new Scanner(System.in); -> System.in like System.out 
+	- if input datatype is string -> String name = scanner.nextLine();
+	- if input datatype is integer -> int num = scanner.nextInt();
+		- Whenever you type on kyboard that is stored in buffer. 
+		- System.in used to connect keyboard to buffer
+		- Now s1 will call s1.nextInt -> goes to buffer & try to extract integer from buffer -> if you entered wrong datatype it will throw an error,
+		  else extract the data & convert it into integer. Whatever we entered is RAW data.
+
+
+
+====================================================================================================================================================================
+
+Lecture13: ->  Exception Handling, use of try, catch and throw, Hierarchy of Exception Classes, 'finally' Keyword
+--------------
+
+- What is exception
+---------------------->
+	- compile -> in laymans language -> UNDERSTAND
+	- run -> interprete & convert to output
+	- so if there is any syntaxial error, javac will not be able to compile it(since it will not undersatnd what to do due to syntaxial error)
+	- Now if syntax is right but there is logical error 
+		- like at some point loop goes to infinity -> give unexpected behavior during runtime
+		- illegal operation like divide by zero ->  will throw an exception at runtime.
+	- This is LOGICAL error
+		- Infinite loops
+		- incorrect calculations
+	- Unexpected behavior due to flawed logic are logical errors.
+	- Exception -> Exceptions occur when something abnormal happens during runtime 
+		(e.g., accessing a 	null pointer or dividing by zero). Logical errors are due to flawed programming logic, not runtime abnormalities.
+	- Whenver JVM encounter an exception it terminates the program (if exceptions are not handled well)
+	- JAVA has some predefined classes which give us error
+		- divide by zero -> ArithmaticException
+		- putting value in 'n'th index which is greater than its capacity -> ArrayOutOfBoundIndex
+		- String s1 = null; s1.length(); -> NullPointerException
+	- If these exceptions are not handled proprly -> program gets terminated
+	- To avoid this we need to handle these EXCEPTIONS.
+	- The main goal of exception handling is to intercept the exception before the JVM does. 
+	- This allows the programmer to gracefully handle the error, such as displaying 
+	  a meaningful  message, retrying an operation, or continuing with the program's execution.
+	- e.g. look the program below
+			
+			System.out.println("A");
+			int x = 5;
+			int y = 0;
+			int z = x/y;
+			int v = z + 10;
+			System.out.println(z);
+			System.out.println(v);
+		
+	- In the given program, there's no syntax error, so it compiles fine. During execution, when the JVM encounters the division by zero (int z = x / y), it identifies this as an ArithmeticException. It creates an object of the ArithmeticException class and throws it. If the programmer hasn't written code to handle(to catch) the exception (try-catch block), the JVM catches it and terminates the program. Exception handling allows us to 'catch' this exception ourselves and manage it, preventing the program from crashing unexpectedly.
+	
+	- throw catch is used to handle 
+		- we throw, java catch -> program terminates
+		- we throw, we catch -> we can handle the exception
+		- java throw, java catch -> program terminates
+		- java throw, we catch -> we can handle the exception
+		
+- What is exception handling?
+---------------------------------->
+	- To intercept the exception before the JVM does. 
+	- This allows the programmer to gracefully handle the error, such as displaying 
+	  a meaningful  message, retrying an operation, or continuing with the program's execution.
+	  
+	  
+-Throwable Class in Java
+---------------------------->
+	- In Java, the Throwable class(Child class of Object class) is the superclass of all errors and exceptions in the Java Exception Handling mechanism. It belongs to the java.lang 	
+	  package and provides the foundation for handling exceptions and errors in Java.
+	- Exception: Represents conditions that a program should catch and handle
+	- Error: Represents serious issues that are typically beyond the control of the application (e.g., JVM crashes, memory issues).
+	- Throwable has two child classes
+		- Error
+		- Exception -> has multiple subclass
+			- IOException
+			- SQL Exception
+			- ClassNameNotFoundException
+			- RunTimeException
+					- NullPointerException
+					- Arithmatic Exception
+					- ArrayIndexOutOfBound exception
+					- IllegalArgument Exception
+							- NumberFormat exception -> this is Multi level inheritance
+							
+- Keywords used in exception handling
+		- try
+		- catch
+		- throw
+		- finally
+		- throws
+		
+- try{}Catch(exceptionObject){}
+--------------------------------->
+	- try{}catch(){} -> try catch/finally/both comes togather, they cant live alone
+	- try{
+			// code where we think may ger exception
+		} 
+		catch(object reference  of any one exception class){
+			// alternative code
+		}
+	- Catch will only invoked if got exception in try block
+	- There can be multiple catch for one try block
+	- So try block finds whether there is exception or not & if there is exception catch block handle it.
+
+// try & catch
+class ExceptionHanding1{
+	public static void main(String args[]){
+	
+		System.out.println("Print A");
+		System.out.println("Print B");
+		String s1 = null;
+		try{
+			System.out.println(s1.length());
+		}catch(NullPointerException n1){  // here we must know what type of exception will be there
+			System.out.println("Caught NullPointerException "+n1.getMessage());
+		}
+		System.out.println("Print C");
+		System.out.println("Print D");
+		try{
+			int z = 5/0;;
+		}
+		catch( ArithmeticException a1){
+			System.out.println("Caught ArithmeticException "+a1.getMessage());
+		}
+		System.out.println("Print E");
+	}
+}
+
+
+
+- "throw" keyword
+------------------->
+	- WHY TO THROW EXCEPTIONS MANUALLY?	
+		- Java doesnt know the some business logics.
+		- In such case code syntaxially & logically be perfect but in business perspective it will create issue. In such case We need to throw maual exception.
+		- Developers use throw to handle specific business requirements that the JVM can't automatically detect.
+		- Also we can generate custom error messages.
+		- e.g.
+			if (balance < withdrawalAmount) {
+				throw new IllegalArgumentException("Insufficient balance.");
+			}		
+		- We can also can create their own exceptions (CustomException) to represent specific error conditions. The JVM cannot automatically throw these.
+		-e.g.
+			if (userNotFound) {
+				throw new UserNotFoundException("User not found with ID: " + userId);
+			}
+	- Purpose: Used to explicitly throw an exception in Java.
+	- Syntax:  throw new ExceptionType("Error message");
+	- Common Use Cases:  
+			- To signal an error or exceptional condition manually in the code.  
+			- For example:
+				if (age < 18) {
+					throw new IllegalArgumentException("Age must be 18 or above.");
+				}
+	- Exception Object:  
+			- You need to create an exception object using `new`.  
+			- Example: `new IllegalArgumentException()`.
+	- Checked vs. Unchecked Exceptions**:  
+			- Checked exceptions (like `IOException`) must be declared in the `throws` clause of the method.  
+			- Unchecked exceptions (like `IllegalArgumentException`) don’t require this.
+	- Flow Interruption:  
+			- When `throw` is executed, it stops the normal flow of the program and jumps to the nearest `catch` block (in case of multiple catch block for one try block).  
+	- Difference From `throws`**:  
+			- `throw`: Used to throw an exception.  
+			- `throws`: Declares the exceptions a method might throw.  
+	- IMP:-> Generally 'throw' exception is written inside of if-else block(not compulsory)
+			- if-else: It is often used to handle specific conditions where an exception needs to be thrown.
+			- developer typically throw exceptions based on certain conditions (e.g., invalid input, unexpected behavior).
+			- The if-else block allows you to check for these conditions before throwing an exception.
+			- throw doesn’t need to be inside an if-else block, but it often is when you want to handle specific conditions.
+	- The JVM throws exceptions only for certain predefined conditions (e.g., division by zero, null pointer access). 
+	- These cover low-level errors but cannot handle application-specific logic or custom rules that vary across programs.
+	- Throw was invented to provide developer-defined control over error scenarios that go beyond the scope of the JVM's automatic exception handling.
+	- Most imp if there is an exception found in try block then only catch block will came in to action else code across the 'catch' will continue to execute.
+
+
+class ExceptionHanding3{
+	public static void main(String args[]){
+		int curBal = 15000;
+		int withdrawal = 14000;
+		try{	
+			if(curBal<withdrawal){
+				throw new Exception("Insufficient Balance");  // if exception occurs & 'throw' throws the exception JVM jumps tonearest catch block
+				// whethere there is exception or not code written below 'throw' will never get executed
+				// System.out.println("Your current balance is: "+ curBal); -> will never get executed -> hence write it in catch block
+			}
+			curBal -= withdrawal;
+			System.out.println(withdrawal + " rupees transaction successfull");
+			System.out.println("Your current balance is: "+ curBal);
+		}
+		catch(Exception e1){
+			System.out.println(e1.getMessage());
+			System.out.println("Your current balance is: "+ curBal);
+		}
+	}
+}
+
+- Throwable class has two child  -> VIMP hack
+	- Exception & Error
+	- now all exception classes like IO exception, Null pointer exception etc are the child of Exception class
+	- So each time in catch block we need not have to write the exact Exceptions reference variable
+	- Just write parents reference variable (UPCASTING)
+	- Syntax:
+		- try{}catch(Exception e1){}
+		- Now this 'e1' cab access all the methods that Exception gave to all its child classes, but can not access child's own methods 
+		
+		
+- 'finally' keyword
+---------------------->
+	- The finally block is used to execute code after a try-catch block, regardless of whether an exception was thrown or not in try block.
+	- The finally block ensures that necessary actions are taken, no matter what happens in the try or catch.
+	- Always executes
+		- Code in the finally block will ALWAYS RUN AFTER THE TRY BLOCK, even if an exception is thrown or if the catch block executes
+		- It executes even if there’s a return statement in the try or catch.
+	- Optional Use
+		- The finally block is optional, but it’s useful for ensuring critical code runs.
+	- VIMP-> Works only if try block is executed. If any exception is thrown before try block then program will be terminated
+	- So Java, a finally block must be used with a try block. However, it is not necessary to have a catch block along with finally.
+	- e.g. following code is valid
+			try {
+				// Code that may throw an exception
+			} finally {
+				// Cleanup code
+			}
+			
+- 'try{} catch(){} finally{}' code
+------------------------------------->
+// try catch finally
+
+class ExceptionHanding2{
+	public static void main(String args[]){
+	
+		System.out.println("Print A");
+		System.out.println("Print B");
+		String s1 = null;
+		try{
+			System.out.println(s1.length());
+		}catch(NullPointerException n1){
+			System.out.println("Caught NullPointerException "+n1.getMessage());
+		}
+		System.out.println("Print C");
+		System.out.println("Print D");
+		try{
+			int z = 5/0;
+		}catch(Exception e1){ // ArithmeticException a1
+			System.out.println("Caught ArithmeticException "+e1.getMessage());
+		}
+		finally{
+			System.out.println("No matter what this block will always be executed by JVM");
+		}
+		System.out.println("Print E");
+		
+		// Only Try & finally
+		onlyTryFinally a1 = new onlyTryFinally();
+			a1.tryFinally();
+	}
+}
+
+- 'try{}finally{}'
+------------------------>
+// Only try & finally
+
+class onlyTryFinally{
+	void tryFinally(){
+		try{
+			System.out.println(5/0);
+		}
+		finally{
+			System.out.println("Without catch finally executed");
+		}
+	}
+}
+
+
+
+====================================================================================================================================================================
+
+Lecture14: ->  Checked Exception & Unckecked Exception & importance of 'throws' keyword
+--------------
+-	Checked Exception -> Compile Time Exception -> JAVA forced Developer to handle it 
+-	UnChecked Exception -> Run Time Exception -> Developer is not forced to handle them, but they should ensure the program's logic avoids such scenarios.
+- Throwable class has 2 child classes
+		- Error 
+		- Exception
+- This 'Exception' class has one child class named as "RunTimeException"
+	- All the subclasses of RuntimeException are "unchecked exceptionS"
+	- So Runtime/Unchecked Exceptions are
+		- ArithmeticException**  
+		- NullPointerException**  
+		- ArrayIndexOutOfBoundsException**  
+		- StringIndexOutOfBoundsException**  
+		- ClassCastException**  
+		- IllegalArgumentException**  
+		- NumberFormatException**  
+		- IllegalStateException**  
+		- UnsupportedOperationException**  
+		- IndexOutOfBoundsException**  
+		- ConcurrentModificationException**  
+		- NegativeArraySizeException**  
+		- MissingResourceException**  
+		- IllegalMonitorStateException**
+	- These exceptions are typically caused by programming mistakes or invalid input. Since they are unchecked exceptions(not compiletime), the programmer is not forced to handle them, but they should ensure the program's logic avoids such scenarios.	
+
+
+- All the child classes of Exception except RuntimeErrorException are "Compiletime Exceptions" -> Checked Exceptions
+	- Developer is forced to handle them 
+	- So COMPILETIME/CHECKED Exceptions are
+		- IOException**  
+		- FileNotFoundException**  
+		- SQLException**  
+		- ClassNotFoundException**  
+		- InterruptedException**  
+		- InstantiationException**  
+		- IllegalAccessException**  
+		- NoSuchMethodException**  
+		- NoSuchFieldException**  
+		- CloneNotSupportedException** 	
+		- InvocationTargetException**  
+		- MalformedURLException**  
+		- ParseException**  
+		- EOFException**  
+		- SocketException**  
+		- UnknownHostException**  
+		- DataFormatException**  
+	- 'throws' -> The throws keyword must be used to declare checked exceptions in the method signature.
+
+
+- Throws Keyword -> Must for Compiletime/checked exception.
+-------------------------------->
+	- Purpose: Declares exceptions that a method might throw, so the caller can handle them.
+	- Basically you are telling the java that be prepare, this code block may throw a compile time exception.
+	- If any exception ocuurs please notify me
+	- 'throws' means the developer is informing Java:
+		"This method might throw a checked (compile-time) exception, so be prepared to handle it."
+	- Syntax:  
+			returnType methodName(parameters) throws ExceptionType {
+				// method body
+			}
+	- Usage:
+			- Primarily used for checked exceptions (e.g., `IOException`, `SQLException`).
+			- Optional for unchecked exceptions (e.g., `NullPointerException`, `ArithmeticException`).
+	- if you used 'throws' -> DO NOT USE "try & catch" METHOD TO HANDLE THE EXCEPTION. YOU ARE TELLING JAVA TO HANDLE IT.
+	- Mandatory for Checked Exceptions**:  
+			- Compiler enforces declaring or handling checked exceptions.
+			- Example:
+					public void readFile() throws IOException {
+						// File reading logic
+					}
+    - Multiple Exceptions:  
+			- A method can declare multiple exceptions separated by commas.
+			- Example:
+					public void process() throws IOException, SQLException {
+						// logic
+					}
+	- Delegates Exception Handling:  
+			- Allows the exception to be handled by the caller, instead of handling it within the method.
+	- Difference From throw: VIMP
+			- `throw`: Used to **throw** an exception.  
+			- `throws`: Used to **declare** exceptions a method might throw.
+	- Not Enforced for Runtime/unchecked Exceptions**:
+   - Example:
+					public void divide() throws ArithmeticException {
+						int result = 10 / 0;
+					}
+
+
+- 'throw' vs 'throws'
+------------------------>
+	- 'throw'  -> To throw the object of an Exception class (Manually throwing exceptions explicitely generally using if else block)
+	- 'throws' -> To report the java that a compile time exception might occure so be prepare for that. -> used in method signature  
+
+
+|-----------------------------------------------------------------------------------------------------------------------------|
+| **Aspect**                | **`throw`**                               | **`throws`**                                        |
+|---------------------------|-------------------------------------------|-----------------------------------------------------|
+| **Usage**                 | Used to **throw** an exception manually   | Used to **declare** exceptions a method may throw   |
+| **Location**              | Inside the method or block of code        | In the method signature                             |
+| **Effect**                | Immediately exits the method/block        | Indicates the method may throw an exception         |
+| **Required for**          | Any exception (checked or unchecked)      | **Checked exceptions** (not required for unchecked) |
+
+
+
+
+- In the below program we are mimiking the compile time throw
+
+import java.io.*;
+
+class ThrowsK{
+	public static void main(String args[]) throws IOException{  
+		System.out.println("A------------------->");
+		throw new IOException();  // Manually throwing compiletime exception.
+	}
+}
+
+
+	- In the following program we intentionally introduced a compiletime exception. So at the time of compilation, compiler will think and asked developer
+	  to fix it 
+	- Out put will be -> unreported exception IOException; must be caught or declared to be thrown
+                          throw new IOException();
+	- The program won't compile because you're throwing an IOException without declaring it with throws or catching it using a try-catch block.
+	
+	-	class ThrowsK{
+			public static void main(String args[]){  
+				System.out.println("A------------------->");
+				throw new IOException();  // Manually throwing compile time exception.
+		    }
+        }
+
+
+====================================================================================================================================================================
+
+Lecture15: ->  File Handling, 'File, FileOutputStream and FileInputStream Classes', How to Write Text in a File in Java
+--------------
+
+- File
+---------------->
+	- A file is a container in a computer system used to store and organize data in a structured format. 
+	- Files allow us to save data PERMANENTLY (until explicitly deleted) so that it can be accessed, modified, or shared later. -> Saved in ROM.
+	- Types of Files:
+		- Text File: Stores readable text data (e.g., .txt, .csv).
+		- Binary File: Stores non-readable data like images, videos, or executable programs (e.g., .exe, .png).
+	- Structure of a File:
+		A file consists of:
+			- Header: Metadata about the file (e.g., file size, creation date, type).
+			- Data: The main content of the file, either text or binary.
+			- Footer: Optional additional information or markers.
+
+- File Handling in programming
+-------------------------------->
+	- Refers to the process of creating, opening, reading, writing, and managing files on a computer. 
+	- It allows programs to interact with files to store or retrieve data for future use.
+	- 3 Logical Operations in file handling
+		- Opening a file    -> Take file into RAM from HDD(ROM)
+		- Processing a file ->
+		- Closing a file    -> Save the file in the HDD
+	- Basic Operations in File Handling:
+		- Create a File: Make a new file on your system.
+		- Open a File: Access an existing file to read, write, or update it.
+		- Read from a File: Retrieve data stored in the file.
+		- Write to a File: Save data into the file.
+		- Close a File: Finish working with the file and release system resources.
+
+- 'File' class
+-------------->
+	- 'File' Class in Java:
+		- The `File` class is used to represent the metadata of a file or directory in the file system (not the file content itself).  
+		- Metadata -> file name, path, size, permissions, and existence.  
+	- File Object in RAM:
+		- When you create a `File` object (e.g., `File f1 = new File("path_to_file");`), the program stores a "reference to the file's metadata" in memory (RAM).  
+		- This object does "not create or open the file". 
+		- It simply creates a reference to the file's location in the storage (ROM or disk).
+	- How to Create a `File` Object:
+		- File f1 = new File("path_of_file_in_storage");
+		- If the file already exists, the `File` object will reference it.
+		- If the file does not exist, you can create it using the `createNewFile()` method.
+	- Breakdown of File f1 = new File("path_of_file_in_storage");
+		- What does the File object contain?
+			- The File object in the heap contains:
+				- The metadata of the file (e.g., name, path, size, etc.).
+				- A reference (internally managed by the JVM) pointing to the file's location in storage (ROM or disk).
+		- What does f1 store?
+			- The reference variable f1 in the stack memory stores the memory address of the File object in the heap.
+	- Hence the File object does not represent the actual file content but only acts as a bridge to interact with the file on disk.
+
+- Methods of 'File' class
+------------------------------>
+- File Creation & Existence:
+	- `createNewFile()`  
+		- Creates a new, empty file if it doesn’t already exist.  
+		- Returns `true` if the file was created, `false` if it already exists.  
+	- `exists()`**  
+		- Checks whether the file or directory exists.  
+	- `mkdir()`**  
+		- Creates a new directory.  
+	- `mkdirs()`**  
+		- Creates the directory along with any necessary but non-existent parent directories.
+
+- File Information (Metadata):
+	- `getName()`  
+		- Returns the name of the file or directory.  
+	- `getPath()`  
+		- Returns the path (relative or absolute) used to create the `File` object.  
+	- `getAbsolutePath()`**  
+		- Returns the absolute path of the file.  
+	- `length()`**  
+		- Returns the length (size) of the file in bytes.  
+	- `isFile()`  
+		- Checks if the file is a file (not a directory).  
+	- `isDirectory()`**  
+		- Checks if the file is a directory.  
+
+- File Deletion:
+	- `delete()`  
+		- Deletes the file or directory.  
+
+- File Permissions:
+	- `canRead()`  
+		- Checks if the file is readable.  
+	- `canWrite()`  
+		- Checks if the file is writable.  
+	- `setReadOnly()`**  
+		- Marks the file as read-only.  
+	- `setWritable(boolean writable)`**  
+		- Sets the writable permission for the file.  
+
+- File Operations:
+	- `renameTo(File dest)`  
+		- Renames the file to the specified destination.  
+	- `list()`  
+		- Returns an array of strings representing the names of files in a directory.  
+	- `listFiles()`  
+		- Returns an array of `File` objects for the files in a directory.  
+
+- Example Program 1:
+
+		import java.io.File;
+		import java.io.IOException;
+
+			public class FileFunctionsExample {
+				public static void main(String[] args) {
+				try {
+					// Create a File object
+						File file = new File("example.txt");
+
+					// Check if the file exists
+						if (!file.exists()) {
+						file.createNewFile();
+						System.out.println("File created: " + file.getName());
+					}
+
+					// Display file information
+					System.out.println("Absolute Path: " + file.getAbsolutePath());
+					System.out.println("Is File: " + file.isFile());
+					System.out.println("Is Readable: " + file.canRead());
+					System.out.println("Is Writable: " + file.canWrite());
+					System.out.println("File Size: " + file.length() + " bytes");
+
+					// Delete the file
+					if (file.delete()) {
+						System.out.println("File deleted successfully.");
+					} else {
+						System.out.println("Failed to delete the file.");
+					}
+					} catch (IOException e) {
+						System.out.println("An error occurred.");
+						e.printStackTrace();
+				}
+				}
+			}
+
+- Example Program 2:
+
+import java.io.*;
+
+class FileHandling{
+	public static void main(String args[]) throws IOException{ 
+		File f1 = new File("a.text");
+		System.out.println("is file exist ->" + f1.exists());
+		System.out.println("can we write it ->" + f1.canWrite());
+		System.out.println("size ->" + f1.length());
+		System.out.println("name ->" + f1.getName());
+		System.out.println("is a file & not a directory ->" + f1.isFile());
+		
+		
+		
+		if(!f1.exists()){
+			f1.createNewFile();
+		}
+		
+		System.out.println("is file exist ->" + f1.exists());
+		System.out.println("can we write it ->" + f1.canWrite());
+		System.out.println("size ->" + f1.length());
+		System.out.println("name ->" + f1.getName());
+		System.out.println("is a file & not a directory ->" + f1.isFile());
+	}
+}
+
+- VIMP: File class: Does not directly handle the content of a file; it only provides information about the file or directory.
+- VIMP: FileOutputStream Class: Used for writing binary data to a file. It is part of Java's input/output (I/O) stream classes.
+
+
+- FileOutputStream Class  -> This is more practical than File
+------------------------->
+	- File class: Deals with file metadata (file existence, path, size).
+	- FileOutputStream: Writes binary data into the file.
+	- FileOutputStream: Requires a File object (or file path) to know where to write the data.
+	- They work together, but one is not a subclass of the other.
+
+- FileOutputStream class has 4 constructors so can be able to make 4 types of objects
+	- Contructors (all are public hence accessible using class name)
+		- FileOutputStream(String name) -> create new file if it doesnt exist
+		- FileOutputStream(String name, boolean append) -> whether to append data or not in the existing file (file path in String form -> "a.txt")
+		- FileOutputStream(File f1) -> need to pass f1(Object made using File class) -> create a file
+		- FileOutputStream(FileDescriptor fdObj) 
+	
+- Summary Table:
+|---------------------------------------------------------------------------------------------------------------------------------------|
+| Constructor                              			| Description                                                                       |
+|---------------------------------------------------|-----------------------------------------------------------------------------------|
+| `FileOutputStream(String name)`          			| Writes to a file specified by its name. Creates a new file if it doesn't exist. 	|
+| `FileOutputStream(String name, boolean append)` 	| Writes to a file with an option to append data.                             		|
+| `FileOutputStream(File f1)`            			| Writes to a file specified by a `File` object.                              		|
+| `FileOutputStream(FileDescriptor fdObj)` 			| Writes to a file using a `FileDescriptor`.                                  		|
+|---------------------------------------------------------------------------------------------------------------------------------------|
+
+
+- IMP Methods of FileOutputStream class
+------------------------------------------>
+
+- Summary of Methods:
+
+| **Method**                     | **Purpose**                                                                 |
+|--------------------------------|-----------------------------------------------------------------------------|
+| `write(int b)`                 | Writes a single byte.                                                       |
+| `write(byte[] b)`              | Writes an entire byte array.                                                |
+| `write(byte[] b, int off, int len)` | Writes a portion of a byte array.                                         |
+| `flush()`                      | Flushes the stream (ensures data is written to the file).                   |
+| `close()`                      | Closes the stream and releases resources.                                   |
+| `getFD()`                      | Returns the `FileDescriptor` of the file output stream.                     |
+
+- f1.write('a') -> can able to add a character at a time.
+- SO if we want to insert a string then convert that string into char array using s1.toCharArray() method & loop the array.
+
+
+- Example 1
+--------------->
+import java.io.*;
+
+class FileOutputStreamDemo{
+	
+	static void loop(FileOutputStream fOS, String s) throws IOException{
+			char ch[] = s.toCharArray();
+			for(int i=0 ; i<ch.length; i++){
+			fOS.write(ch[i]);
+			}
+	}
+	
+	public static void main(String args[]) throws IOException{
+		String s1 = "Swapnil";
+		String s2 = "Shaligram";
+		String s3 = "Pandharinath";
+		String s4 = "Indubai";
+		/*
+	 
+		1.	File f1 = new File("Example1.txt") -> File object is created
+			FileOutputStream fo1 = new FileOutputStream(f1);
+				Following type Creates a FileOutputStream to write to the file represented by a File object. If the file does not exist, it is created.
+		
+		2.	FileOutputStream fo1 = new FileOutputStream("Example1.txt", boolean flag);
+			Creates a FileOutputStream to write to the file specified by the given file name, with an option to append data to the file.
+				If append is true, data will be written at the end of the file.
+				If append is false, the file will be overwritten.
+				
+		3.	FileOutputStream fo1 = new FileOutputStream("Example1.txt");
+			Creates a FileOutputStream to write to the file specified by the given file name. If the file does not exist, it is created.
+			Whatever we write, it overwriiten on previous one.
+		*/
+		FileOutputStream fo1 = new FileOutputStream("example1.txt");
+		FileOutputStream fo2 = new FileOutputStream("example1.txt", true);
+		FileOutputStream fo3 = new FileOutputStream("example3.txt", false);
+		File f1 = new File("example2.txt");
+		FileOutputStream fo4 = new FileOutputStream(f1);
+		
+		loop(fo1, s1);
+		loop(fo2, s2);
+		loop(fo3, s3);
+		loop(fo4, s4);
+		
+	}
+}
+
+
+
+
+====================================================================================================================================================================
+Lecture16 & Lecture17: ->  Collection Framework, Collection interface  -> Two diagrams are important
+-----------------------
+
+- Collection
+-------------- 
+	- Refers to a specific interface that defines basic operations for handling collections. 
+	- Present in java.util package.
+	
+- Collection Framework
+------------------------- 
+	- A broader system of interfaces and classes that provides a complete set of tools to manage data in different forms (lists, sets, queues etc) 
+	- Hence Collection framework is Basically a group including Collection interfaces, its child interfaces i.e. List, Set, and Queue interfaces & 
+	  classes made from implementing these child interfaces (e.g. ArrayList,LinkedList, Vector, Stack these classes are made from implementing 
+	  List interface)
+	- MAP -> is Seperate interface, not the child of any interface still part of collection framework.
+
+- Collection framework has 3 main components
+---------------------------------------------
+	- Container -> data structures to store data
+		- These are the data structures that store elements, like List, Set, and Queue (implementations include ArrayList, HashSet, etc.).
+		- can store heterogenious data (using raw objectsof collection classes)
+		- e.g. Arraylist can store string, integer, boolean valuaes in same ArrayList object(ArrayList<> ar = new ArrayList())
+	- Cursor -> iterators for traversing
+		- These are iterators (like Iterator, ListIterator) that allow traversing through element of Collection(e.g., ArrayList, HashSet, etc.).
+	- Algorithms -> 
+		- These are predefined methods for operations like sorting, searching, shuffling, etc., provided by the Collections utility class.
+		- The Collections class in the java.util package provides a set of utility methods (algorithms) to perform common operations like:
+				Sorting: Collections.sort(list)
+				Searching: Collections.binarySearch(list, key)
+				Shuffling: Collections.shuffle(list)
+				Reversing: Collections.reverse(list)
+				Max/Min: Collections.max(collection), Collections.min(collection)
+				These algorithms work on objects of classes in the Collection Framework, such as List, Set, or Map.
+
+- Arraylist & vector -> 
+	- 90% same
+		- This is true as both are implementations of the List interface and internally use dynamic arrays for storage. However, they differ in some key 
+		  aspects like synchronization and resizing.
+	- both are array
+	- vector
+		- Can increase size double: ✅
+				- By default, Vector doubles its size when it reaches capacity.
+				  Example: If the initial capacity is 2, adding 1 value expands it to 2; adding another 2 values expands it to 4, then 8, and so on.
+		- It is synchronized hence thread-safe: ✅
+				- Vector methods are synchronized, making it thread-safe for concurrent access.
+		- Slow in operation: ✅
+				- Synchronization makes Vector slower compared to ArrayList in non-threaded or single-threaded environments because synchronization adds overhead.
+	- Arraylist
+		- Increase size dynamically :
+			- ArrayList increases its size dynamically by 50% of its current capacity when it reaches its limit.
+			- For example: If the capacity is 10, it expands to 15, then 22, and so on.
+		- It is non-synchronized hence not thread-safe: ✅
+			- ArrayList is not synchronized, so it's not thread-safe. For thread-safe operations, you can wrap it using Collections.synchronizedList() 
+			  or use alternatives like CopyOnWriteArrayList.
+		- Fast compared to Vector: ✅
+			- ArrayList is faster in single-threaded operations because it doesn’t have the synchronization overhead that Vector has.
+		- Part of java.util package
+
+- Collection Interface's common abstract methods
+--------------------------------------------------->
+	- Parent interface of List, Set & Queue Interfaces
+	- Common methods:
+		- add(): Adds an element.Returns boolean. If operation successful returns true else false
+		- addAll(): Add all the elements. Returns boolean. If operation successful returns true else false
+		- remove(): Removes an element.Returns boolean. If operation successful returns true else false
+		- removeAll(ObjectName): Removes all elements of object specified. Returns boolean. If operation successful returns true else false
+		- retainAll(objectName): will remove all content except elements of Object name specified. 
+		- clear(): Clears the collection. Remove all elements irrespective of any object. Return type Void.
+		- size(): Returns the number of elements.
+		- capacity(): returns the capacity of collection. Returns integer 
+		- contains(): Checks if an element exists.
+		- isEmpty(): Checks if the collection is empty. Returns boolean.
+		- iterator(): Returns an iterator to traverse the collection. Returns Iterator. (Iterator interface)
+	
+
+- 'Collection' Interface Vs 'Collections' Class
+--------------------------------------------------->
+
+- COLLECTION Interface
+------------------------>
+
+- Part of java.util package: 
+	- `Collection` is an interface, the root of the Java collection framework.
+- Used to hold groups of objects: 
+	- It's a framework for managing data in a list, set, or queue format.
+- Parent of most collection types: 
+	- It is extended by List, Set, and Queue interfaces i.e. parent class of these interfaces.
+- No direct instantiation: 
+	- You can't create a `Collection` object directly, but you can use classes like `ArrayList`, `HashSet`, etc., that implement it.
+- Common methods:
+  - `add()`: Adds an element.
+  - `remove()`: Removes an element.
+  - `clear()`: Clears the collection.
+  - `size()`: Returns the number of elements.
+  - `contains()`: Checks if an element exists.
+  - `isEmpty()`: Checks if the collection is empty.
+  - `iterator()`: Returns an iterator to traverse the collection.
+- It is the base/parent interface, and the actual collections (like List, Set) provide more specific features.
+		
+		
+- COLLECTIONS class
+--------------------->
+
+- Part of java.util package: 
+	- `Collections` is a utility class, not an interface or a data structure.
+- Static methods: 
+	- It provides static methods to operate on or return collections (like lists, sets, etc.).
+- No direct instantiation: 
+	- You can't create an object of the `Collections` class because all methods are static.
+- Common methods:
+  - `sort()`: Sorts a list.
+  - `reverse()`: Reverses the order of elements in a list.
+  - `shuffle()`: Randomly shuffles elements in a list.
+  - `min()` / `max()`: Finds the minimum or maximum element in a collection.
+  - `swap()`: Swaps elements in a list.
+  - `unmodifiableCollection()`: Returns a read-only version of the collection.
+  - `frequency()`: Counts how many times an element appears in a collection.
+  - `emptyList()`, `emptySet()`, `emptyMap()`: Returns empty collections.
+- It is a helper class that simplifies operations on collections.
+
+====================================================================================================================================================================
+Lecture18: ->  Predefined functions of List Interface in Java, ArrayList class Features
+--------------
+
+- Basic parent child diagram of List Interface
+	- Collection(Super interface)
+		- 'List' child Interface of collection interface
+			- 'ArrayList' implemented Class of List interface
+			- 'LinkedList' implemented Class of List interface
+			- 'Vector' implemented Class of List interface
+				- 'Stack' child class of vector
+
+- Common methods of List Interface 
+------------------------------------------->
+	- Index is Important here
+	- The Collection interface provides common methods for Set, List, and Queue. Since Set does not support indexing, the methods in the Collection 
+	  interface itself are indexless. However, List adds index-based methods.
+	- Format of methods should be return type MethodName(Arguments);
+	- same as array -> elements are trveresed using index.
+	- ArrayList, linkedList are the implemented classes of List interferenece
+	- For searching Arraylist is fast but for insertion & deletion operation linked list is fast(doubly linked list is fast).
+		- void add(int index, datatype element) -> add new element -> total no of elements increased
+		- datatype set (int index, datatype element); -> it replaces the existing element i.e. removing old element & adding new in that place -> total no of 
+		  elements remains the same.
+		- datatype get(int index) -> returns the element present at that index
+		- int indexOf(object O) -> returns index
+		- int lastIndexOf(Object O) -> does return the index of the last occurrence of the specified object. It searches backward from the end of the list.
+		- datatype remove(int index) -> will return the element which got deleted
+		- List<datatype>.subList(int indexFrom, int indexTo) -> It returns a sublist like substring from string. 	
+
+
+
+- ArrayList
+-------------------->
+	- Most important class of List interface for automation testing
+	- Values are stored in consecutive memory location
+	- Hence insertion operation takes massive shifting -> reduce performance
+	- defined using dynamic array
+	- hence resizable
+	- duplicates are allowed (in Set its not allowed)
+	- order of elements are preserved since stored in consecutive memory location
+	- Null insertion is possible
+	- Heterogenious data are allowed (TreeSet & TreeMap does not allow Heterogenous data)
+	- By default size is 10
+	- Capacity increases by 50%+1 when limit/size is reached.
+	- Formula is new capacity = (current capacity + 3/2) + 1;
+	- How to make object of ArrayList
+		ArrayList<> arrL = new ArrayList<>
+	- To traverse the List's child classes Iterator class's function(iterator method) is used. 
+		- The iterator() method, which belongs to the Iterable interface (implemented by Collection), provides an Iterator object. 
+		- This can be used to traverse elements in any List (or its child classes like ArrayList and LinkedList).
+		- e.g.
+		
+		import java.util.ArrayList;
+		import java.util.Iterator;
+
+		public class Main {
+			public static void main(String[] args) {
+				ArrayList<String> li = new ArrayList<>();
+				li.add("A");
+				li.add("B");
+				li.add("C");
+
+				// Create an Iterator
+				Iterator<String> g1 = li.iterator();
+
+				// Traverse using Iterator
+				while (g1.hasNext()) {
+					String element = g1.next(); // Get the next element
+					System.out.println(element); // Output: A, B, C
+				}
+			}
+		}
+		
+		- The iterator() method creates an Iterator object (g1 in this case), but it does not traverse the ArrayList automatically.
+		- The Iterator object (g1) must be used with a loop (using hasNext()-> returns whether is there any next element and next() returns the element)
+		  to manually traverse the elements.
+		- The Iterator does not return an "Iterator type object for each index"; it returns the element at the current position in the list.
+
+
+====================================================================================================================================================================
+Lecture19: ->  Linked List | Vector | Stack
+--------------
+
+- Linked List:
+------------------>
+	- Data stored in Non consecutive memory location
+	- Cost of insering an element in the middle is lesser as shifting is not necessary
+	- As LinkedList is not index-based, accessing an element is costlier than ArrayList because it requires traversing the list node by node, 
+	  leading to O(n) time complexity
+	- Assume Data is stored in one block which has 2 compartments(3 in case of doubly LL), one stores da while other stores pointer/address of next 
+	  block( in doubly LL 3rd block stores address of previous block)
+	- Common methods
+		- Basic Operations
+			- Adding Elements
+				1.void addFirst(E e)
+					- Adds the specified element at the beginning of the list.
+				2. void addLast(E e)  
+					- Adds the specified element at the end of the list.
+				3. boolean add(E e)  
+					- Appends the specified element to the end of the list. Returns `true` if successful.
+				4. void add(int index, E element)  
+					- Inserts the specified element at the specified position in the list.
+					- Since LinkedList is not index-based, inserting at an index requires traversing up to that position (O(n) complexity in worst case).
+					- Once at the position, the insertion is O(1) because LinkedList adjusts only the pointers.
+			
+			- Accessing Elements
+				5. E getFirst()  
+					- Retrieves the first element of the list.
+				6. E getLast()  
+					- Retrieves the last element of the list.
+				7. E get(int index)  
+					- Returns the element at the specified position in the list.
+			
+			- Removing Elements
+				8. E removeFirst()  
+					- Removes and returns the first element of the list.
+				9. E removeLast()  
+					- Removes and returns the last element of the list.
+				10. E remove(int index)  
+					- Removes and returns the element at the specified position in the list.
+				11. boolean remove(Object o)`**  
+					- Removes the first occurrence of the specified element from the list, if present. Returns `true` if successful.
+				12. E remove()  
+					- Removes and returns the first element of the list (same as `removeFirst()`).
+
+			- Searching
+				13. boolean contains(Object o)  
+					- Returns `true` if the list contains the specified element.
+				14. int indexOf(Object o)  
+					- Returns the index of the first occurrence of the specified element, or `-1` if not found.
+				15. int lastIndexOf(Object o)  
+					- Returns the index of the last occurrence of the specified element, or `-1` if not found.
+
+			- Queue-Specific Methods
+				16. boolean offer(E e)  
+					- Adds the specified element to the end of the list. Returns `true` if successful.
+				17. E peek()  
+					- Retrieves, but does not remove, the head of the list, or returns `null` if the list is empty.
+				18. E poll()  
+					- Retrieves and removes the head of the list, or returns `null` if the list is empty.
+
+			- Stack-Specific Methods
+				19. void push(E e)  
+					- Pushes an element onto the stack represented by the list.
+				20. E pop()
+					- Pops an element from the stack represented by the list.
+
+			- Miscellaneous
+				21. int size()  
+					- Returns the number of elements in the list.
+				22. boolean isEmpty()  
+					- Returns `true` if the list contains no elements.
+				23. void clear()  
+					- Removes all elements from the list.
+				24. Object[] toArray()
+					- Returns an array containing all elements of the list in proper sequence.
+				25. <T> T[] toArray(T[] a)  
+					- Returns an array containing all elements of the list in proper sequence, using the runtime type of the specified array.
+				26. LinkedList<E> clone()  
+					- Returns a shallow copy of the list.
+	
+	- LinkedList<> l1 = new LinkedList<>();
+	- Convert ArrayList in LinkedList
+			ArrayList a1 = new ArrayList(5);
+			LinkedList<> l2 = new LinkedList<a1>();   linkedList accepts the collection to convert into LinkedList.
+*/
+
+import java.util.LinkedList;
+
+public class LinkedListWithFunctions {
+    public static void main(String[] args) {
+        // Create a LinkedList of Strings
+        LinkedList<String> names = new LinkedList<>(); // specifically for string
+		// LinkedList names = new LinkedList();  // Raw LinkedList. Also valid (no compile-time checks). Not recommended, as it removes type safety. 
+		
+        // Adding elements to the LinkedList
+        names.add("Alice");        // Adds to the end
+        names.add("Bob");
+        names.addFirst("Zara");    // Adds to the beginning
+        names.addLast("Charlie"); // Adds to the end
+        names.add(2, "Eve");       // Adds at index 2
+
+        // Display the LinkedList
+        System.out.println("LinkedList: " + names);
+
+        // Accessing elements
+        System.out.println("First Element: " + names.getFirst());
+        System.out.println("Last Element: " + names.getLast());
+        System.out.println("Element at index 2: " + names.get(2));
+
+        // Removing elements
+        names.removeFirst();      // Removes the first element
+        names.removeLast();       // Removes the last element
+        names.remove("Eve");      // Removes the specified element
+
+        // Display the LinkedList after removals
+        System.out.println("After removals: " + names);
+
+        // Checking if the LinkedList contains an element
+        System.out.println("Contains 'Bob'? " + names.contains("Bob"));
+
+        // Size of the LinkedList
+        System.out.println("Size of LinkedList: " + names.size());
+
+        // Clear the LinkedList
+        names.clear();
+        System.out.println("LinkedList after clear: " + names);
+    }
+}
+
+
+
+- Vector
+------------->
+	- Vector<DataType> v1 = new Vector<>(); // The diamond operator allows you to avoid repeating the type on both sides of the declaration.
+	- Vector v1 = new Vector(); // Raw type (not type-safe, avoid using)
+	- Underlying Data Structure: It is based on a dynamic array.
+	- Increases capacity by double.
+	- Default capacity is 10.
+	- Thread-Safety: Vector is synchronized, which means it is thread-safe for concurrent access. However, this synchronization makes it slower 
+	  compared to ArrayList.
+	- Duplicates are allowed.
+	- Insertion order is preserved.
+	- Null insertion allowed
+	- Heterogeneous data can be stored.
+	- Vector methods are synchronized.
+	- Common Functions:
+		- Adding Elements
+			1. boolean add(E e)  
+				- Adds the specified element to the end of the vector.
+			2. void add(int index, E element) 
+				- Inserts the specified element at the specified position in the vector.
+		
+		- Accessing Elements
+			3. E get(int index)  
+				- Returns the element at the specified index.
+			4. E firstElement()`**  
+				- Returns the first element of the vector.
+			5. E lastElement()  
+				- Returns the last element of the vector.
+		
+		- Removing Elements
+			6. boolean remove(Object o)  
+				- Removes the first occurrence of the specified element. Returns `true` if successful.
+			7. E remove(int index)  
+				- Removes and returns the element at the specified index.
+			8. void clear()  
+				- Removes all elements from the vector.
+		
+		- Searching
+			9. boolean contains(Object o)  
+				- Checks if the vector contains the specified element. Returns `true` if found.
+			10. int indexOf(Object o)  
+				- Returns the index of the first occurrence of the specified element, or `-1` if not found.
+
+		- Capacity and Size
+			11. int size()  
+				- Returns the number of elements in the vector.
+			12. int capacity()  
+				- Returns the current capacity of the vector.
+			13. void ensureCapacity(int minCapacity)  
+				- Ensures that the vector has at least the specified capacity.
+
+	
+*/
+
+import java.util.Vector;
+
+public class VectorDemo {
+    public static void main(String[] args) {
+        // Create a Vector to store Strings
+        Vector<String> vector = new Vector<>();
+
+        // Add elements to the Vector
+        vector.add("Alice");
+        vector.add("Bob");
+        vector.add("Charlie");
+
+        // Print the Vector
+        System.out.println("Vector: " + vector);
+
+        // Access an element by index
+        System.out.println("Element at index 1: " + vector.get(1));  // Bob
+
+        // Remove an element
+        vector.remove("Bob");
+        System.out.println("Vector after removing Bob: " + vector);
+
+        // Check if the Vector contains an element
+        System.out.println("Does the vector contain 'Alice'? " + vector.contains("Alice"));  // true
+
+        // Get the size of the Vector
+        System.out.println("Size of the vector: " + vector.size());
+
+        // Iterate over the Vector
+        System.out.println("Iterating through the Vector:");
+        for (String name : vector) {
+            System.out.println(name);
+        }
+    }
+}
+
+
+
+- Stack
+------------->
+	- First In Last Out (FILO)
+	- Child class of Vector
+	- Stack s1 = new Stack(); // raw Stack
+	- Stack<String> stack = new Stack<>(); // Type casted Stack
+	- Stack (which is derived from Vector) behaves similarly to ArrayList when it comes to capacity and resizing. 
+	- You do not need to specify the size of the stack explicitly. 
+	- It will automatically expand when the number of elements exceeds the current capacity, just like ArrayList.
+	- An initial capacity of 10 elements
+	- Commonly used Methods
+| Method              | Return Type | Description                                                   |
+|---------------------|-------------|---------------------------------------------------------------|
+| `push(E item)`      | `void`      | Adds the element to the top of the stack.                     |
+| `pop()`             | `E`         | Removes and returns the top element.                          |
+| `peek()`            | `E`         | Returns the top element without removing it.                  |
+| `isEmpty()`         | `boolean`   | Checks if the stack is empty.                                 |
+| `search(Object o)`  | `int`       | Returns the 1-based position of the element, or `-1` if not found. |
+
+
+
+import java.util.Stack;
+
+public class StackDemo {
+    public static void main(String[] args) {
+        // Create a Stack to store Strings
+        Stack<String> stack = new Stack<>();
+
+        // Push elements onto the Stack
+        stack.push("Alice");
+        stack.push("Bob");
+        stack.push("Charlie");
+
+        // Print the Stack
+        System.out.println("Stack: " + stack);
+
+        // Peek the top element (without removing it)
+        System.out.println("Top element: " + stack.peek());  // Charlie
+
+        // Pop elements from the Stack
+        System.out.println("Popped element: " + stack.pop()); // Charlie
+        System.out.println("Popped element: " + stack.pop()); // Bob
+
+        // Check if the Stack is empty
+        System.out.println("Is stack empty? " + stack.isEmpty());  // false
+
+        // Print the remaining elements
+        System.out.println("Remaining stack: " + stack);
+
+        // Pop the last element
+        System.out.println("Popped element: " + stack.pop()); // Alice
+
+        // Check if the Stack is empty
+        System.out.println("Is stack empty? " + stack.isEmpty());  // true
+    }
+}
+
+
+====================================================================================================================================================================
+Lecture20: ->  Set Interface of Collection Interface in Java, Time Complexity
+--------------
+
+- - Time Complexity
+	- Descending order
+		O(N^3) > O(N^2) > O(N) > O(Log(N)) > O(Nlog(N)) > O(1)
+	- The time complexities 
+		- **O(N^3)**: Cubic time complexity, grows very fast with large inputs.
+		- **O(N^2)**: Quadratic time complexity, commonly seen in algorithms like bubble sort or matrix multiplication.
+		- **O(N)**: Linear time complexity, grows directly in proportion to the size of the input.
+		- **O(Log(N))**: Logarithmic time complexity, common in algorithms like binary search where each step reduces the problem size exponentially.
+		- **O(Nlog(N))**: Log-linear time complexity, typically seen in efficient sorting algorithms like Merge Sort and Quick Sort.
+		- **O(1)**: Constant time complexity, the fastest, where the operation doesn't depend on the size of the input.
+
+
+- Parent child diagram of Set Interface
+-------------------------------------------
+	- Collection (Super Interface)
+		- 'Set' child Interface of 'Collection' Interface
+			- 'SortedSet' child Interface of 'Set' Interface
+				- 'NavigableSet' child Interface of 'SortedSet' Interface
+					- 'TreeSet' implemented class Of 'NavigableSet' Interface
+			- 'HashSet' implemented class Of 'Set' Interface
+				- 'LinkedHashSet' child class of 'HashSet' class
+				
+				
+- Set
+------------->
+	- child of Collection Interface
+	- Its is also an interface
+	
+	
+- SortedSet Interface
+-------------------------->
+	- Child of Set interface
+	- NavigableSet is child of SortedSet
+	- Set
+		- SortedSet
+			- NavigableSet
+				- TreeSet Class
+
+	- Duplicates are not allowed
+	- elements are sorted order (Ascending order by default)
+	- Unique Elements: Like other sets, it does not allow duplicate elements.
+	- Heterogeneous data not allowed(sorted order will disturbed)
+	- Performance: Provides logarithmic time complexity (O(log N)) for operations like add(), remove(), and contains() in implementations like TreeSet.
+	- Common methods
+		- Comparator<? super E> comparator():
+			Returns the comparator used for sorting the set, or null if it uses natural ordering.
+		- E first():
+			Retrieves the first (lowest) element in the set.
+		- E last():
+			Retrieves the last (highest) element in the set.
+		- SortedSet<E> headSet(E toElement):
+			Returns a view of the portion of the set whose elements are strictly less than toElement.
+		- SortedSet<E> tailSet(E fromElement):
+			Returns a view of the portion of the set whose elements are greater than or equal to fromElement.
+		- SortedSet<E> subSet(E fromElement, E toElement):
+			Returns a view of the set within the range fromElement (inclusive) to toElement (exclusive).
+			
+
+- Example of TreeSet:
+---------------------------
+
+import java.util.TreeSet;
+
+public class SortedInterface {
+    public static void main(String[] args) {
+		// TreeSetExample 
+        // Create a TreeSet
+        TreeSet<Integer> treeSet = new TreeSet<>();
+
+        // Add elements to the TreeSet
+        treeSet.add(10);
+        treeSet.add(5);
+        treeSet.add(20);
+        treeSet.add(15);
+
+        // Print the TreeSet (automatically sorted)
+        System.out.println("TreeSet: " + treeSet);  // Output: [5, 10, 15, 20]
+
+        // Get the first (lowest) element
+        System.out.println("First Element: " + treeSet.first());  // Output: 5
+
+        // Get the last (highest) element
+        System.out.println("Last Element: " + treeSet.last());  // Output: 20
+
+        // Get a subset (less than 15)
+        System.out.println("HeadSet (less than 15): " + treeSet.headSet(15));  // Output: [5, 10]
+
+        // Get a subset (greater than or equal to 10)
+        System.out.println("TailSet (10 and above): " + treeSet.tailSet(10));  // Output: [10, 15, 20]
+
+        // Get a subset (between 5 and 20)
+        System.out.println("SubSet (5 to 20): " + treeSet.subSet(5, 20));  // Output: [5, 10, 15]
+    }
+}
+
+
+- HashSet
+----------->
+	- Definition: A `HashSet` class is part of the Java Collections Framework and implements the `Set` interface. It is backed by a hash table 
+		(actually a `HashMap` instance).
+	- Uniqueness: It does not allow duplicate elements. Any duplicate insertion is ignored.
+	- Order: It does not guarantee any specific order of the elements (not sorted). 
+	- Null Elements: It allows a single `null` element.
+	- Performance:
+		- Time Complexity: O(1) for basic operations like `add()`, `remove()`, and `contains()` on average. Uses hash codes for storing elements.
+		- Hashing: Uses hash codes for storing elements.
+	- Thread-Safety: It is not synchronized. If thread-safety is required, you can use `Collections.synchronizedSet()` or `CopyOnWriteArraySet`.
+	- Common Methods:
+		- `boolean add(E e)`: Adds an element.
+		- `boolean remove(Object o)`: Removes the specified element.
+		- `boolean contains(Object o)`: Checks if an element exists.
+		- `int size()`: Returns the number of elements.
+		- `boolean isEmpty()`: Checks if the set is empty.
+		- `void clear()`: Removes all elements.
+	- Constructor: 
+		- `HashSet<E>()`: Default constructor.
+		- `HashSet<E>(Collection<? extends E> c)`: Initializes the set with elements from another collection.
+		- `HashSet<E>(int initialCapacity)`: Initializes with a specific capacity.
+		- `HashSet<E>(int initialCapacity, float loadFactor)`: Initializes with a specific capacity and load factor.
+	- Default capacity is 16
+	- When filled 75% grows dynamically(double like vector) (Load factor 75% -> can be changed)
+
+
+- A 'HashSet' is like a box where you can keep items, but:
+	- Each item must be **unique** (no duplicates allowed).
+	- The box doesn't care about the order of items.
+	- For example:
+
+		HashSet<String> set = new HashSet<>();
+		set.add("Apple");
+		set.add("Banana");
+		set.add("Apple"); // Duplicate, so it's ignored.
+		System.out.println(set); // Output: [Apple, Banana]
+
+	- Does it store key-value pairs?**
+		- No! A **HashSet** stores only **values** (like "Apple", "Banana").
+		- If you want to store key-value pairs (like "Name = John"), you need to use a **HashMap** instead.
+
+- Example of HashSet:
+-------------------------
+
+	import java.util.HashSet;
+
+	public class HashSetDemo {
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> fruits = new HashSet<>();
+
+        // Add elements to the HashSet
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Apple"); // Duplicate, won't be added
+
+        // Print the HashSet
+        System.out.println(fruits); // Output might look like: [Banana, Orange, Apple]
+
+        // Check if an element exists
+        if (fruits.contains("Banana")) {
+            System.out.println("Banana is in the HashSet!");
+        }
+
+        // Remove an element
+        fruits.remove("Orange");
+
+        // Print the updated HashSet
+        System.out.println(fruits); // Output might look like: [Banana, Apple]
+    }
+	}
+
+
+- LinkedHashSetDemo
+------------------------>
+	- child class of HashSet
+	- HashSet & Doubly linked list both are used here
+		- Uses a hash table to store elements for fast access (like HashSet).
+		- Uses a doubly linked list to maintain the insertion order of elements.
+	- Insertion order preserved.
+		- Unlike HashSet, which does not guarantee any order, LinkedHashSet maintains the order in which elements are added.
+	- Used hybrid datastructure
+	
+	- Key Differences Between `HashSet` and `LinkedHashSet`:
+	
+| Feature               | `HashSet`                  | `LinkedHashSet`           |
+|-----------------------|----------------------------|---------------------------|
+| Order of Elements**   | Unordered                  | Preserves insertion order |
+| Performance**         | Faster (no order tracking) | Slightly slower (due to linked list) |
+| Use Case**            | When order doesn't matter  | When order is important    |
+
+	- Constructors:
+		- LinkedHashSet<E>(): Default constructor.
+		- LinkedHashSet<E>(int initialCapacity): Initializes with a specific capacity.
+		- LinkedHashSet<E>(int initialCapacity, float loadFactor): Initializes with a specific capacity and load factor.
+		- LinkedHashSet<E>(Collection<? extends E> c): Initializes with elements from another collection.
+	
+	- Common Methods:
+		- boolean add(E e): Adds an element.
+		- boolean remove(Object o): Removes the specified element.
+		- boolean contains(Object o): Checks if an element exists.
+		- int size(): Returns the number of elements.
+		- boolean isEmpty(): Checks if the set is empty.
+		- void clear(): Removes all elements. 
+	
+- Example of LinkedHashSet:
+-----------------------------
+
+	import java.util.LinkedHashSet;
+	public class LinkedHashSetDemo {
+    public static void main(String[] args) {
+        LinkedHashSet<String> set = new LinkedHashSet<>();
+
+        // Add elements
+        set.add("Apple");
+        set.add("Banana");
+        set.add("Orange");
+
+        // Common methods
+        System.out.println("Set: " + set);                     // [Apple, Banana, Orange]
+        System.out.println("Size: " + set.size());             // 3
+        System.out.println("Contains 'Banana': " + set.contains("Banana")); // true
+        System.out.println("Is Empty: " + set.isEmpty());      // false
+
+        set.remove("Orange");
+        System.out.println("After removing 'Orange': " + set); // [Apple, Banana]
+
+        set.clear();
+        System.out.println("After clearing: " + set);          // []
+    }
+	}
+
+
+====================================================================================================================================================================
+Lecture21: ->  Cursors | Enumeration | Iterator | ListIterator in Java
+--------------
+
+- Cursors
+----------------->
+	- Simply pointers 
+	- Dont confuse with 'Cursor' class: Cursor class is a part of Java AWT package and it is used to create custom cursors 
+	  or inherit system or predefined cursors.
+	- Generally used to retrieve the data from collection object one by one.
+	- There are 3 cursors in java
+		- Enumeration
+			- It is an Interface in java
+			- Only available for legacy classes in all collection framework: Hence only usefull for Vector & Stack.
+			- has two abstract methods
+				- boolean hasMoreElements();
+				- E nextElement();
+			- Vectors & stack has a function called 'elements()' which returns the Enumeration(Enum) type data.
+				- e.g. v1 is an vector object then v1.elements() will return an Enumeration type data. Hence need to store it in Enumeration variable
+				- This 'elements()' function is only usefull for enumartion
+				- Enumeration is not the same as 'enum' keyword in Java.
+					- enum is a keyword in Java used to define a special class with constant values.
+					- It is a type-safe way to define a set of predefined constants.
+					- Can have methods, constructors, and variables.
+					- Used for categorizing fixed values like days of the week, colors, etc.
+					- Example program
+						enum Color {
+							RED, GREEN, BLUE;
+						}
+
+						public class EnumExample {
+							public static void main(String[] args) {
+								Color c = Color.RED;
+								System.out.println(c);  // RED
+							}
+						}
+		- Enumeration can move in single(forward) direction only.
+		- Only Read option is available.
+		
+		- Iterator
+			- It is also an Interface in java.
+			- Has three abstract classes
+				- public boolean hasNext();
+				- public E next();
+				- public void remove();
+			- How it is different from Enum?
+				- Is available for Collection implemented classes.
+				- Hence all classes have 'iterator()' function.
+				- it just not the retrieve the data but can remove the data as well. (Enum can only retrive the data)
+			- Iterator can move in single(forward) direction only.
+			- Only Read & Remove option is available.
+			- Both Enumeration and Iterator do not have any parent interface. They are independent interfaces used for traversing collections.
+		
+		- ListIterator
+			- It is child interface of 'Iterator' interface
+			- ListIterator is bi-directional cursor.
+			- Also available for all List implemented classes with name 'listIterator()'.
+			- Has seven abstract classes
+				- public boolean hasNext();
+				- public E next();
+				- public void remove();
+				- public boolean hasPrevious();
+				- public E previous();
+				- public void add(E e);
+				- public void set(E e);  // replaces
+				- public int nextIndex();
+				- public int previousIndex();
+
+- Example Program
+----------------------
+
+import java.util.*;
+
+class CursorsDemo{
+	public static void main(String args[]){
+		Vector v1 = new Vector();
+		v1.add('A');
+		v1.add('B');
+		v1.add('C');
+		v1.add('D');
+		v1.add('E');
+		v1.add('Z');
+		
+		// Enum
+		Enumeration e1 = v1.elements();
+		System.out.println("Following is the output of Enum");
+		while(e1.hasMoreElements()){
+			System.out.println(e1.nextElement());
+		}
+		System.out.println("-------------------------------");
+		
+		// Iterator
+		Iterator i1 = v1.iterator();
+		System.out.println("Following is the output of Iterator");
+		while(i1.hasNext()){
+			char char1 = (char)i1.next();
+			if(char1 == 'C')
+				i1.remove();
+			else	
+				System.out.println(char1);
+		}
+		System.out.println("-------------------------------");
+		
+		// ListIterator
+		ListIterator l1 = v1.listIterator();
+		System.out.println("Following is the output of ListIterator \n");
+		System.out.println("//Forward");
+		while(l1.hasNext()){
+			System.out.println(l1.next());
+		}
+		System.out.println("//Backward");
+		while(l1.hasPrevious()){
+			System.out.println(l1.previous());
+		}
+	}
+}
+
+
+====================================================================================================================================================================
+Lecture22: ->  Difference between HashMap & Hashtable 
+--------------
+
+In Java, Hashtable and HashMap are both implementations of the `Map` interface, used for storing key-value pairs. However, they have key differences:
+
+| Feature               | **Hashtable** | **HashMap** |
+|-----------------------|--------------------------------------|------------------------------------------------------|
+| **Thread Safety**     | Synchronized (thread-safe)           | Not synchronized (not thread-safe)                   |
+| **Performance**       | Slower due to synchronization        | Faster as it is unsynchronized                       |
+| **Null Keys/Values**  | Does not allow `null` keys or values | Allows one `null` key and multiple `null` values     |
+| **Legacy vs. Modern** | Legacy class (part of Java 1.0)      | Introduced in Java 1.2, preferred for new development |
+| **Iteration (Fail-Fast vs. Fail-Safe)** | Fail-Safe (does not throw `ConcurrentModificationException`) | Fail-Fast (throws `ConcurrentModificationException` if modified during iteration) |
+| **Use Case**          | Used in multi-threaded environments requiring synchronization | Used in single-threaded or externally synchronized environments |
+
+-  When to Use What?
+	- Use **Hashtable** if you need built-in synchronization.
+	- Use **HashMap** for better performance in single-threaded applications or use `Collections.synchronizedMap(new HashMap<>())` for thread safety.
+
+====================================================================================================================================================================
+Lecture23: ->  Functional programming, lambda expression, java stream 
+--------------
+URL: https://www.youtube.com/watch?v=zMNBGVWGzmM&list=PL78RhpUUKSweClRi_l05UgfE3053-zkRf&index=4
+
+- Object Oriented Programming:
+	- Object-Centric Approach – In OOP, everything revolves around objects, which represent real-world entities.
+	- Encapsulation of Data & Behavior – Objects encapsulate both data (attributes) and methods (operations) that manipulate that data.
+	- Functions are member of class(static) or object(instance). Hence they can not be stored in an variable as value/data.
+	- In traditional Object-Oriented Programming (OOP), functions (or methods) are typically bound to objects and cannot be passed directly as arguments.
+		- Here data is passed as an argument
+		- In pure OOP, methods are bound to objects and cannot be passed directly.
+	- However, in modern Java (from Java 8 onwards), you can pass functions as arguments using functional interfaces, lambda expressions, and method references.
+	- Functional Interfaces: Templates for function, making it easier to use them in different parts of your program.
+	- e.g.
+		1. Using Functional Interfaces (Lambda Expression)
+			- Java provides predefined functional interfaces such as Function<T, R>, Predicate<T>, and Consumer<T>.
+				import java.util.function.Function;
+				public class FunctionAsArgument {
+					// Method that takes a function as an argument
+						static int operate(int x, Function<Integer, Integer> function) {
+							return function.apply(x);
+						}
+						
+					public static void main(String[] args) {
+					// Passing a lambda function
+					int result = operate(5, num -> num * num);  // Square function
+					System.out.println(result); // Output: 25
+					}
+				}
+				
+		2. Using Method References : Instead of lambdas, you can pass method references directly:
+				public class MethodReferenceExample {
+					static int square(int x) {
+						return x * x;
+					}
+
+					public static void main(String[] args) {
+					// Passing a method reference
+					Function<Integer, Integer> squareFunction = MethodReferenceExample::square;
+        
+					// Using the function
+					System.out.println(squareFunction.apply(6)); // Output: 36
+					}
+				}
+
+
+	
+	
+- Functional programming:
+	- Way of writing program in which functions are treated as small building blocks of code.
+	- functions are the primary building blocks, and computations are treated as evaluations of mathematical functions. 
+	- functions are treated as data (can be stored in variable) & passed as an argument or return a function.
+	- It focuses on immutability, pure functions, and declarative code rather than object manipulation. -> Ask for more elaborate ans
+	- Function-Centric Approach
+		- Unlike OOP, where objects are central, FP revolves around pure functions (functions without side effects).
+		- Operations revolve around function composition, higher-order functions, and immutability.
+	- Pure Functions:-> A function is considered pure if:
+		- It always returns the same output for the same input.
+		- It has no side effects (does not modify external state).
+	- Immutability
+		- Data is not modified; instead, new copies are created.
+		- Example using Java Streams (Functional Style)
+			List<Integer> numbers = List.of(1, 2, 3, 4, 5);
+			List<Integer> squaredNumbers = 	 numbers.stream()
+											.map(n -> n * n) // Transformation without modifying original list
+											.toList();
+	- Higher-Order Functions
+		- Functions can be passed as arguments or returned from other functions.
+		- Functions can be stored in variable
+		- Example (Java Function Interface)
+			Function<Integer, Integer> square = x -> x * x; // Function as a variable
+			System.out.println(square.apply(5)); // Output: 25	
+	- Declarative Programming
+		- Instead of how to do something, FP focuses on what to do.
+		- Example
+			// Imperative (OOP Style)
+				List<String> names = new ArrayList<>();
+				for (String name : List.of("Alice", "Bob", "Charlie")) {
+					if (name.startsWith("A")) {
+					names.add(name);
+					}
+				}
+
+			// Functional (FP Style)
+				List<String> names = List.of("Alice", "Bob", "Charlie")
+                         .stream()
+                         .filter(name -> name.startsWith("A"))
+                         .toList();
+
+
+- Comparison in short
+--------------------------
+|------------------------------------------------------------------------------------------------|
+| Feature           | OOP (Object-Oriented)        | FP (Functional Programming)                 |
+|-------------------|------------------------------|---------------------------------------------|
+| Core Concept      | Objects (state + behavior)   | Functions (stateless computations)          |
+| Data Mutation     | Mutable (state changes)      | Immutable (new data created)                |
+| Functions         | Methods inside objects       | First-class citizens (independent)          |
+| Side Effects      | Allowed (modifies state)     | Avoided (pure functions)                    |
+| Code Style        | Imperative (step-by-step)    | Declarative (expressions & transformations) |
+|------------------------------------------------------------------------------------------------|
+
+
+- How can we use functional programming in JAVA?
+--------------------------------------------------
+	- With lambda expressions and streams, Java allows you to use the functional programming (FP) paradigm while still being an object-oriented (OOP) language. 
+	- This makes Java a multi-paradigm language (supporting both OOP and FP).
+	- How Java Supports Functional Programming?
+		- ✅ Lambda Expressions – Enables passing behavior (functions) as arguments.
+		- ✅ Streams API – Allows functional-style operations like map, filter, reduce, etc.
+		- ✅ Method References – Enables concise function passing using existing methods.
+		- ✅ Functional Interfaces – Enables higher-order functions using Function<T, R>, Predicate<T>, etc.
+		
+		
+- OOP vs FP in Java
+---------------------------  
+
+| Feature            | OOP (Object-Oriented)          | FP (Functional Programming)    |
+|--------------------|--------------------------------|--------------------------------|
+| Core Concept       | Objects & Classes              | Functions & Expressions        |
+| State Mutation     | Allowed (Objects have state)   | Avoided (Immutability)         |
+| Functions          | Methods inside classes         | First-class citizens           |
+| Side Effects       | Possible (State changes)       | Avoided (Pure functions)       |
+| Code Style         | Imperative (Loops, conditions) | Declarative (Streams, Lambdas) |
+
+
+- Lambda Expression
+-----------------------
+	- nameless/anonymous functions (like arrow functions in JS)
+	- Syntax: 
+		- if there are multiple parameters & multiline code: (parameters) -> {code;}
+		- if there is single parameter & single line of code: parameter -> code;
+		- if there is no parameter: () -> code;  OR ()->{Multi line code;}
+		- in multiline if lambda expression is returning something then write return explicitely.
+	- Try to avoid multiline code in lambda expression
+	- Great with collections
+	- Can be use in functional interface only i.e. used to implement a method of a functional interface
+
+
+- Java Stream
+-----------------------
+	- Sequence of elements (we dont know where is the end, so do operation on it parallely)
+	- Streams dont store the data
+	- They just on the fly process the data from collection or arrays.
+	- Useful for doing functional operations (like filter, map, reduce)
+	- In built multi threading support
+	- Intermediate operations returns the stream
+	- Terminal operations don't return anything.
+	- hence if there is no terminal operation is used, need to store in stream variable.
+	- if used terminal operation, do not store it as it consumes the stream.
+
+
+- Filter & reduce
+---------------------
+	- Filter(Intermediate Operation)	
+	  -----------------------------
+		- Purpose: 
+			- Used to filter elements of stream.
+			- Only those emelents passed the given condition(predicate) are included to result stream.
+		- Lazy Operation:
+			- Not executed until a terminal operation is invoked on the stream
+		- Returns a stream:
+			- Filter method returns a stream of elements which passed the condition.
+		- E.g.
+			List<String> lt = List.of("Apple", "Banana", "Kiwi", "Pineapple", "Pomegranate", "Date", "Papaya");
+			// convert the collection to stram using stream() method
+			lt.stream().filter(e -> e.endsWith("e")).forEach(e -> System.out.println(e));
+			
+	- Reduce(Terminal Operation)
+	  ---------------------------
+		- Purpose:
+			- Used to reduce the elements of stream to a single value.
+			- can be used for summing, finding min/max or other oprrations
+			- e.g.1 // return the sum of all elements
+			List<Integer> numbers = List.of                        
+			numbers.stream()
+					.reduce(0, (a,b) -> a+b;)	// 0 is the initial return.
+			
+			- e.g.2 // return the max of all elements
+			List<Integer> numbers = List.of(1,2,3,7,8,9,11,45,12);
+			numbers.stream()
+					.reduce(Integer.MIN_VALUE, (a,b) -> a>b ? a : b);  // use of ternery operator
+					
+
+- Functional Interfaces
+-----------------------------
+	- Must have single/only one abstract method. can have multiple non abstract method.
+	- Intended to be used with lambda expressions, providing a target type for lambdas & method expression
+
+- Method References
+---------------------------
+	- Syntax -> :: (double colon)
+	- e.g. System.out.println() can be written as System.out::println, here it denotes that 'System.out' is an object & use 'println' method of it.
+	- used with functional interfaces
+	- They make more redable & concise
+	- Limitations: can only be used for methods that fit parameters & return type.
+	- can also be used with constructor
+		e.g. CunstructorName::new 

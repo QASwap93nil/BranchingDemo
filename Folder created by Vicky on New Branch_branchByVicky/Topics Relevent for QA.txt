@@ -1,0 +1,96 @@
+As a **Software Tester** and aspiring **Automation QA**, you don’t need to focus on all the topics in the list. Below are the **necessary topics** for you, categorized based on relevance to your role:
+
+---
+
+### **1. Core Java (Must Know for Automation QA)**  
+These topics will help you build a strong foundation in Java, which is essential for writing automation scripts:
+
+- **Basics of Java**:
+  - 2:01 Introduction to Java (History)
+  - 4:18 Flavors of Java
+  - 13:15 Features of Java
+  - 32:42 What is Compiler? How JVM Works in Java
+  - 34:40 How to Download & Install Java
+  - 44:00 First Java Program | Notepad
+
+- **Object-Oriented Programming (OOPs)**:
+  - 1:03:10 What is Class?
+  - 1:09:30 How to Create Classes?
+  - 1:15:24 Static Functions in a Class
+  - 2:07:20 Classes and Objects
+  - 6:06:26 Inheritance in Java
+  - 6:22:51 Types of Inheritance in Java
+  - 6:46:26 This Keyword & Super Keyword in Java
+  - 7:12:25 Function Overloading & Function Overriding
+  - 7:12:41 What is Polymorphism in OOPs
+
+- **Exception Handling**:
+  - 10:27:05 Exception Handling in Java
+  - 10:42:14 What is the Use of Try, Catch, and Throw Block
+  - 11:03:00 Finally Keyword in Java
+  - 11:30:50 Checked Exception | Compile-Time Exception & Throw Keyword in Java
+  - 11:43:04 Throws Keyword in Java
+  - 11:51:10 Difference Between Throw and Throws Keyword
+
+---
+
+### **2. Automation-Specific Topics (Highly Relevant for QA)**  
+These topics will help you understand concepts used in frameworks like Selenium, TestNG, or similar tools:
+
+- **Wrapper Classes** (For handling test data conversions):
+  - 3:20:45 What is Wrapper Classes in Java
+  - 3:26:53 List of Wrapper Predefined Classes
+
+- **Multithreading** (For parallel execution in automation frameworks):
+  - 8:21:28 Multithreading Explained in Java
+  - 8:45:50 Program Multithreading Implementation
+
+- **File Handling** (For reading/writing test data from files):
+  - 14:00:45 File Handling in Java | File Class in Java
+  - 14:15:40 FileOutputStream and FileInputStream Classes in Java
+  - 14:17:55 How to Write Text in a File in Java
+
+- **Collection Framework** (For managing test data efficiently):
+  - 14:23:35 Collection Framework in Java
+  - 14:54:28 Collection Interface in Java
+  - 15:14:00 Collection Interface Child Implementation Classes
+  - 15:15:35 List Interface in Java
+  - 15:28:15 Collections Class in Java
+  - 15:48:15 How to Use Collection Using ArrayList Class in Java
+  - 16:00:00 Predefined Functions of List Interface in Java
+  - 16:10:48 ArrayList Class Features and Program in Java
+  - 16:56:00 Set Interface of Collection Interface in Java
+
+---
+
+### **3. Advanced Topics (Nice to Know for QA)**  
+These are not mandatory but useful if you encounter related requirements in automation:
+
+- **Command Line Arguments**:
+  - 4:08:20 Command Line Arguments
+
+- **Access Specifiers**:
+  - 5:10:20 Access Specifiers in Java
+
+- **Abstract Classes and Interfaces**:
+  - 7:20:00 Abstract Class in Java
+  - 7:44:51 Interface in Java | Abstract Class vs Interface
+
+- **Thread Priority & Synchronization** (Useful for advanced automation):
+  - 9:00:11 Thread States in Multithreading in Java
+  - 9:19:58 Scanner Class & Synchronization in Multithreading (Full Program)
+
+---
+
+### **4. Topics to Skip (Not Relevant for QA)**  
+The following topics are not required unless you are specifically testing **desktop GUI applications**:
+- 11:58:09 Introduction to GUI
+- 11:59:45 AWT & SWING APIs in Java
+- 12:10:40 Login Screen GUI Full Program in Java
+- 13:35:33 MouseListener in Java
+- 18:03:08 How to Create Digital Calculator in Java Using AWT | SWING
+
+---
+
+### **Conclusion**  
+Focus on **Core Java**, **Exception Handling**, **Collections**, **File Handling**, and **Multithreading**. Skip **AWT/Swing** unless specifically required for testing Java GUI applications. These topics are sufficient to build a strong base for automation testing.
