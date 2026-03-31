@@ -1,0 +1,99 @@
+package RahulShettyAcedemy.testComponents;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Properties;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
+import RahulShettyAcedemy.pageObjects.LandingPage;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.ObjectMapper;
+
+public class BaseTests {
+	public WebDriver driver; // Declared public so that every method can access it.
+	public LandingPage landingPage;
+
+	public WebDriver initializeDriver() throws IOException {
+		String rootPath = System.getProperty("user.dir");
+		// Properties class
+		Properties prop = new Properties();
+		FileInputStream fis = new FileInputStream(
+				rootPath + "\\src\\main\\java\\RahulShettyAcademy\\resources\\GlobalData.properties");
+		prop.load(fis);
+
+		// Extracting browserValue
+		String browser = prop.getProperty("browser");
+
+		// Setting up browser
+		if (browser.equals("chrome")) {
+			driver = new ChromeDriver();
+		} else if (browser.equals("firefox")) {
+			driver = new FirefoxDriver();
+		} else {
+			driver = new EdgeDriver();
+		}
+
+//		driver.manage().window().maximize();
+		// Set fixed resolution
+		driver.manage().window().setSize(new Dimension(1920, 1080));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+		// return driver
+		return driver;
+	}
+
+	// Land on the page of selected URL
+	@BeforeMethod(alwaysRun = true) // Will run before every method
+	public LandingPage launchAppLocation() throws IOException {
+		driver = initializeDriver();
+		landingPage = new LandingPage(driver);
+		landingPage.goTo(); // go to URL
+		return landingPage;
+	}
+
+	@AfterMethod(alwaysRun = true)
+	public void tearDown() {
+		driver.quit();
+	}
+
+	// Take ScreenShot when test case fails.
+	public String takeScreenShot(String testCaseName, WebDriver driver) throws IOException {
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File src = ts.getScreenshotAs(OutputType.FILE);
+		File dest = new File(System.getProperty("user.dir") + "/reports/" + testCaseName + ".png");
+		FileUtils.copyFile(src, dest);
+		return System.getProperty("user.dir") + "/reports/" + testCaseName + ".png";
+	}
+
+	// Convert Json to map
+	public List<HashMap<String, String>> getJsonDataToMap(String fileDir) throws IOException {
+		// Convert jason to string
+		String jsonContent = Files.readString(Path.of(fileDir));
+
+		// Convert jsonContent(string) to List of Hashmaps
+		ObjectMapper mapper = new ObjectMapper();
+		List<HashMap<String, String>> data = mapper.readValue(jsonContent,
+				new TypeReference<List<HashMap<String, String>>>() {
+				});
+
+		// return variable that holds List of hashmaps
+		return data;
+	}
+
+}

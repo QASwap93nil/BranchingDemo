@@ -1,0 +1,43 @@
+package RahulShettyAcedemy.tests;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import RahulShettyAcedemy.pageObjects.CheckOutPage;
+import RahulShettyAcedemy.pageObjects.MyCartPage;
+import RahulShettyAcedemy.pageObjects.OrdeDetailsPage;
+import RahulShettyAcedemy.pageObjects.ProductCatalogue;
+import RahulShettyAcedemy.testComponents.BaseTests;
+
+public class ErrorValidationsTest extends BaseTests {  // Validating negative test scenarios
+
+	@Test(groups= {"LoginErrorHandling"})
+	public void incorrectCredsValidation() throws IOException, InterruptedException {
+
+//		landingPage.loginApplication("vinayak.sheth@gmail.com", "Vin@yakS26"); // correct creds
+		landingPage.loginApplication("vinayak.shatt@gmail.com", "Vin@ya2222kS26"); // Incorrect creds
+
+		Assert.assertEquals("Incorrect email or password.", landingPage.getErrorMessage());
+
+	}
+	
+	@Test
+	public void productErrorValidation() throws IOException, InterruptedException {
+		
+		String productName = "ADIDAS ORIGINAL";
+		ProductCatalogue pc =landingPage.loginApplication("vinayak.sheth@gmail.com", "Vin@yakS26");
+		List<WebElement> productList = pc.waitToGetProductList();
+		WebElement selectedProduct = pc.getProductByName(productName);
+		pc.addToCartBtnMethod( productName);
+		MyCartPage mcp = pc.goToCart();  // Please see this method
+		List<WebElement> cartProducts = mcp.waitToGetProductLoadedInCart();
+
+		Boolean isMatch = mcp.verifyProductByName("ABIBAS ORIGINAL"); // giving wrong product intentinally
+		Assert.assertFalse(isMatch); 
+	}
+
+}

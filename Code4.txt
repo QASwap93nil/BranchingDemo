@@ -1,0 +1,114 @@
+package RahulShettyAcedemy.tests;
+
+import java.io.File;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import RahulShettyAcedemy.pageObjects.CheckOutPage;
+import RahulShettyAcedemy.pageObjects.LandingPage;
+import RahulShettyAcedemy.pageObjects.MyCartPage;
+import RahulShettyAcedemy.pageObjects.OrdeDetailsPage;
+import RahulShettyAcedemy.pageObjects.OrdersPage;
+import RahulShettyAcedemy.pageObjects.ProductCatalogue;
+import RahulShettyAcedemy.testComponents.BaseTests;
+
+public class PlacingOrderTest extends BaseTests {
+	String productName = "ADIDAS ORIGINAL";
+
+	@Test(dataProvider = "getDataUsingJson", groups = "placeOrder")
+	public void placingOrderTest(HashMap<String, String> hs) throws IOException, InterruptedException {
+
+		String email = hs.get("UserName");
+		String password = hs.get("Password");
+		String productName = hs.get("productName");
+		// 1. Login to app
+		ProductCatalogue pc = landingPage.loginApplication(email, password);
+
+		// 2. Wait to get all products loaded
+		List<WebElement> productList = pc.waitToGetProductList();
+
+		// 3. Select targeted product from product list
+		WebElement selectedProduct = pc.getProductByName(productName);
+
+		// 4. Wait for addToCart btn to be clickable & then click it
+		pc.addToCartBtnMethod(productName);
+
+		// 5. Before clicking cart btn wait to appear toaster & wait to disappear loader
+		// then click cart button
+		MyCartPage mcp = pc.goToCart(); // Please see this method
+
+		// 6. On my cart page wait to get load all the products that are added to cart
+		List<WebElement> cartProducts = mcp.waitToGetProductLoadedInCart();
+
+		// 7. Check that your selected product is present in cart or not
+		Boolean isMatch = mcp.verifyProductByName(productName);
+		Assert.assertTrue(isMatch); // Validations should only be in test page(test case) not in POC (page object
+									// classes)
+
+		// 8. Wait for checkout btn to be clickable & then click it
+		CheckOutPage cop = mcp.goToCheckOutPage();
+
+		// 9. wait to load cvv box & enter cvv code
+		String cvv = "123";
+		cop.enterCvv(cvv);
+
+		// 10. Select country from auto suggestions
+		String countryInitials = "ind";
+		cop.selectCountryFromAutoSuggetionsBox(countryInitials);
+
+		// 11. Click the placeOrder button
+		OrdeDetailsPage odp = cop.placeTheOrder();
+
+		// 12. Go to Order details page & capture the success msg & print on console
+		String orderSuccessMsg = odp.orderSuccessfullMsg();
+		Assert.assertEquals(orderSuccessMsg, "Thankyou for the order.".toUpperCase());
+
+		// 13. Close the browser
+//		tearDown();
+
+	}
+
+	// check that placed order is present in orders page or not
+	@Test(dependsOnMethods = { "placingOrderTest" })
+	public void checkOrderInOrderHistoryTest() {
+
+		// 1. Login to app
+		ProductCatalogue pc = landingPage.loginApplication("vinayak.sheth@gmail.com", "Vin@yakS26");
+
+		// 2. After placing order please check that order placed is showing in order
+		// history page
+		OrdersPage ordersPage = pc.goToOrdersPage();
+		Assert.assertTrue(ordersPage.verifyProductInOrderPage(productName));
+	}
+
+// DataProvider
+	@DataProvider // using simple arrays
+	public Object[][] getDataUsingJson() throws IOException {
+		String rootDir = System.getProperty("user.dir");
+		String filePath = rootDir + "/src/test/java/RahulShettyAcademy/Data/placingOrderJasonData.json";
+		List<HashMap<String, String>> jasonData = getJsonDataToMap(filePath);
+		Object convertedData[][] = new Object[jasonData.size()][1];
+
+		for (int i = 0; i < jasonData.size(); i++) {
+			convertedData[i][0] = jasonData.get(i);
+		}
+
+		return convertedData;
+	}
+
+}
